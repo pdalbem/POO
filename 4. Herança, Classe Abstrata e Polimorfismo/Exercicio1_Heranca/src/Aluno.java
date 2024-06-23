@@ -1,8 +1,7 @@
-public abstract class Aluno extends Pessoa{ //Classe abstrata.
+public abstract class Aluno extends Pessoa {
     private double ira;
     private String prontuario;
     private Curso curso;
-
 
     public Aluno(String cpf, String nome, double ira, String prontuario, Curso curso) {
         super(cpf, nome);
@@ -33,5 +32,15 @@ public abstract class Aluno extends Pessoa{ //Classe abstrata.
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    // Implementação do método abstrato mostrarDados()
+    @Override
+    public void mostrarDados() {
+        System.out.println("\n CPF: " + this.getCpf() +
+                "\n Nome: " + this.getNome() +
+                "\n IRA: " + this.getIra() +
+                "\n Prontuário: " + this.getProntuario() +
+                "\n Curso: " + this.getCurso().getNome());
     }
 }
