@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/10_HashTable/10_HashTable.iml" filepath="$PROJECT_DIR$/10_HashTable/10_HashTable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/11_Queue/11_Queue.iml" filepath="$PROJECT_DIR$/11_Queue/11_Queue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/12_PriorityQueue/12_PriorityQueue.iml" filepath="$PROJECT_DIR$/12_PriorityQueue/12_PriorityQueue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/13_Deque/13_Deque.iml" filepath="$PROJECT_DIR$/13_Deque/13_Deque.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14_Stack/14_Stack.iml" filepath="$PROJECT_DIR$/14_Stack/14_Stack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/1_ArrayList/1_ArrayList.iml" filepath="$PROJECT_DIR$/1_ArrayList/1_ArrayList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2_LinkedList/2_LinkedList.iml" filepath="$PROJECT_DIR$/2_LinkedList/2_LinkedList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3_Vector/3_Vector.iml" filepath="$PROJECT_DIR$/3_Vector/3_Vector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/4_HashMap/4_HashMap.iml" filepath="$PROJECT_DIR$/4_HashMap/4_HashMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/5_TreeMap/5_TreeMap.iml" filepath="$PROJECT_DIR$/5_TreeMap/5_TreeMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/6_LinkedHashMap/6_LinkedHashMap.iml" filepath="$PROJECT_DIR$/6_LinkedHashMap/6_LinkedHashMap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/7_HashSet/7_HashSet.iml" filepath="$PROJECT_DIR$/7_HashSet/7_HashSet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/8_TreeSet/8_TreeSet.iml" filepath="$PROJECT_DIR$/8_TreeSet/8_TreeSet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/9_LinkedHashSet/9_LinkedHashSet.iml" filepath="$PROJECT_DIR$/9_LinkedHashSet/9_LinkedHashSet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Collections.iml" filepath="$PROJECT_DIR$/Collections.iml" />
+    </modules>
+  </component>
+</project>
