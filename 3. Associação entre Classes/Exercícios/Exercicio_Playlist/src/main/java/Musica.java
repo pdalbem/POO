@@ -1,19 +1,19 @@
-import java.time.LocalTime;
+import java.time.Duration;
 
 public class Musica {
     private String titulo;
     private String artista;
     private String estilo;
-    private LocalTime duracao;
+    private Duration duracao;
 
     public void mostrarDados(){
         System.out.println("\n Título: " + titulo
                           + "\n Artista: " + artista
                           + "\n Estilo: " + estilo
-                          + "\n Duração: " + duracao);
+                          + "\n Duração: " + duracao.toMinutesPart()+":"+duracao.toSecondsPart());
     }
 
-    public Musica(String titulo, String artista, String estilo, LocalTime duracao) {
+    public Musica(String titulo, String artista, String estilo, Duration duracao) {
         this.titulo = titulo;
         this.artista = artista;
         this.estilo = estilo;
@@ -44,11 +44,11 @@ public class Musica {
         this.estilo = estilo;
     }
 
-    public LocalTime getDuracao() {
+    public Duration getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(LocalTime duracao) {
+    public void setDuracao(Duration duracao) {
         this.duracao = duracao;
     }
 }

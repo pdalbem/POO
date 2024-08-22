@@ -1,4 +1,4 @@
-import java.time.LocalTime;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,13 +7,11 @@ public class Playlist {
     private String nome;
     private List<Musica> musicas = new ArrayList<>();
 
-    public LocalTime calcularDuracao(){
-        LocalTime soma = LocalTime.of(0,0,0);
+    public Duration calcularDuracao(){
+        Duration duracao=  Duration.ZERO;
         for (Musica m: musicas)
-            soma = soma.plusHours(m.getDuracao().getHour())
-                    .plusMinutes(m.getDuracao().getMinute())
-                    .plusSeconds(m.getDuracao().getSecond());
-        return soma;
+            duracao = duracao.plus(m.getDuracao());
+        return duracao;
 
 
     }
