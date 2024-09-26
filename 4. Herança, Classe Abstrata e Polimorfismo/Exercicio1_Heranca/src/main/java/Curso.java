@@ -4,6 +4,7 @@ public class Curso {
     private String nome;
     private String sigla;
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

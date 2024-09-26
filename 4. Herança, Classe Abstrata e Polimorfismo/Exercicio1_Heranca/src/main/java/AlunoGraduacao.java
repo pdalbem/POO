@@ -1,27 +1,23 @@
 public class AlunoGraduacao extends Aluno{
-    private double horasAtividadeComplementar;
+    private double horasAtividades;
 
-    public AlunoGraduacao(String cpf, String nome, double ira, String prontuario, Curso curso, double horasAtividadeComplementar) {
-        super(cpf, nome, ira, prontuario, curso);
-        this.horasAtividadeComplementar = horasAtividadeComplementar;
+    public AlunoGraduacao(String cpf, String nome, String prontuario, double ira, Curso curso, double horasAtividades) {
+        super(cpf, nome, prontuario, ira, curso);
+        this.horasAtividades = horasAtividades;
     }
 
-    public double getHorasAtividadeComplementar() {
-        return horasAtividadeComplementar;
+    public double getHorasAtividades() {
+        return horasAtividades;
     }
 
-    public void setHorasAtividadeComplementar(double horasAtividadeComplementar) {
-        this.horasAtividadeComplementar = horasAtividadeComplementar;
+    public void setHorasAtividades(double horasAtividades) {
+        this.horasAtividades = horasAtividades;
     }
-
 
     @Override
     public void mostrarDados() {
-        System.out.println("\n CPF: " + this.getCpf()
-                            + "\n Nome: " + this.getNome()
-                            + "\n Prontuário: " + this.getProntuario()
-                            + "\n IRA: " + this.getIra()
-                            + "\n Curso: " + this.getCurso().getNome()
-                            + "\n Horas:" + this.getHorasAtividadeComplementar());
+        System.out.println("\nNome: "+this.getNome()
+                           +"\nCurso: "+this.getCurso().getNome()
+                           +"\nHoras de atividades: "+this.getHorasAtividades());
     }
 }

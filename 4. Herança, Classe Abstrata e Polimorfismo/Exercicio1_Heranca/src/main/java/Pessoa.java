@@ -1,12 +1,7 @@
-import java.util.Objects;
-
-public abstract class Pessoa { //Classe abstrata, não é possível instanciar objetos
+public abstract class Pessoa {
     private String cpf;
     private String nome;
 
-
-
-    //Método abstrato. As classes filhas concretas devem implementá-lo
     public abstract void mostrarDados();
 
     public Pessoa(String cpf, String nome) {
