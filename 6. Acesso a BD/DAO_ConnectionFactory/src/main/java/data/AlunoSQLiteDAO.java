@@ -7,6 +7,7 @@ import model.Curso;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class AlunoSQLiteDAO implements DAO<Aluno>{
@@ -55,24 +56,25 @@ public class AlunoSQLiteDAO implements DAO<Aluno>{
     }
 
     @Override
-    public Aluno findById(int idAluno) {
+    public Optional<Aluno> findById(int idAluno) {
         String sql = "SELECT * FROM aluno WHERE idAluno=?";
-        Aluno a=null;
-        try(PreparedStatement stmt = ConnectionFactory.createStatement(sql)){
-            stmt.setInt(1,idAluno);
+        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
+            stmt.setInt(1, idAluno);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                Curso curso = new CursoSQLiteDAO().findById(rs.getInt("curso"));
-                Cidade cidade = new CidadeSQLiteDAO().findById(rs.getInt("cidade"));
-                a = new Aluno(rs.getInt("idAluno"),
+
+            if (rs.next()) {
+                Curso curso = new CursoSQLiteDAO().findById(rs.getInt("curso")).orElse(null);
+                Cidade cidade = new CidadeSQLiteDAO().findById(rs.getInt("cidade")).orElse(null);
+                Aluno a = new Aluno(rs.getInt("idAluno"),
                         rs.getString("prontuario"),
                         rs.getString("nome"),
-                        curso,cidade);
+                        curso, cidade);
+                return Optional.of(a);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return a;
+        return Optional.empty();
     }
 
     @Override
@@ -82,8 +84,8 @@ public class AlunoSQLiteDAO implements DAO<Aluno>{
         try(PreparedStatement stmt = ConnectionFactory.createStatement(sql)){
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                Curso curso = new CursoSQLiteDAO().findById(rs.getInt("curso"));
-                Cidade cidade = new CidadeSQLiteDAO().findById(rs.getInt("cidade"));
+                Curso curso = new CursoSQLiteDAO().findById(rs.getInt("curso")).orElse(null);
+                Cidade cidade = new CidadeSQLiteDAO().findById(rs.getInt("cidade")).orElse(null);
                 Aluno a = new Aluno(rs.getInt("idAluno"),
                         rs.getString("prontuario"),
                         rs.getString("nome"),

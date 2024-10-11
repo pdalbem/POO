@@ -5,6 +5,7 @@ import model.Cidade;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class CidadeSQLiteDAO implements DAO<Cidade>{
@@ -48,19 +49,20 @@ public class CidadeSQLiteDAO implements DAO<Cidade>{
     }
 
     @Override
-    public Cidade findById(int codCid) {
-        Cidade c=null;
+    public Optional<Cidade> findById(int codCid) {
         String sql = "SELECT * FROM cidade WHERE idCidade=?";
-        try(PreparedStatement stmt = ConnectionFactory.createStatement(sql)){
-            stmt.setInt(1,codCid);
+        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
+            stmt.setInt(1, codCid);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next())
-                c = new Cidade(rs.getInt("idCidade"), rs.getString("nome"));
 
+            if (rs.next()) {
+                Cidade c = new Cidade(rs.getInt("idCidade"), rs.getString("nome"));
+                return Optional.of(c);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return c;
+        return Optional.empty();
     }
 
     @Override

@@ -5,6 +5,7 @@ import model.Curso;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public  class CursoSQLiteDAO implements DAO<Curso>{
@@ -48,20 +49,22 @@ public  class CursoSQLiteDAO implements DAO<Curso>{
     }
 
     @Override
-    public Curso findById(int codCur) {
+    public Optional<Curso> findById(int codCur) {
         String sql = "SELECT * FROM curso WHERE idCurso=?";
-        Curso c=null;
-       try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)){
-           stmt.setInt(1,codCur);
-           ResultSet rs = stmt.executeQuery();
-           while (rs.next())
-               c = new Curso(rs.getInt("idCurso"), rs.getString("nome"));
+        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
+            stmt.setInt(1, codCur);
+            ResultSet rs = stmt.executeQuery();
 
-       } catch (SQLException e) {
+            if (rs.next()) {
+                Curso c = new Curso(rs.getInt("idCurso"), rs.getString("nome"));
+                return Optional.of(c);
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return c;
+        return Optional.empty();
     }
+
 
     @Override
     public List<Curso> findAll() {
