@@ -1,8 +1,9 @@
-package data;
+package frameworks;
 
-import model.Aluno;
-import model.Cidade;
-import model.Curso;
+import interfaces.DAO;
+import domain.Aluno;
+import domain.Cidade;
+import domain.Curso;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,21 +11,27 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class AlunoSQLiteDAO implements DAO<Aluno>{
+public class AlunoSQLiteDAO implements DAO<Aluno> {
     @Override
-    public void save(Aluno a) {
-        String sql = "INSERT INTO aluno values (?,?,?,?,?)";
-
+    public int save(Aluno a) {
+        String sql = "INSERT INTO aluno (prontuario, nome, curso, cidade) values (?,?,?,?)";
+        int generatedId=0;
         try(PreparedStatement stmt = ConnectionFactory.createStatement(sql)){
-            stmt.setInt(1,a.getIdAluno());
-            stmt.setString(2,a.getProntuario());
-            stmt.setString(3,a.getNome());
-            stmt.setInt(4,a.getCurso().getIdCurso());
-            stmt.setInt(5, a.getCidade().getIdCidade());
+            stmt.setString(1,a.getProntuario());
+            stmt.setString(2,a.getNome());
+            stmt.setInt(3,a.getCurso().getIdCurso());
+            stmt.setInt(4, a.getCidade().getIdCidade());
             stmt.executeUpdate();
+
+           ResultSet generatedKeys = stmt.getGeneratedKeys();
+           if (generatedKeys.next())
+                    generatedId= generatedKeys.getInt(1);
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return generatedId;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package model;
+package domain;
 
 
 public class Cidade {
@@ -9,6 +9,10 @@ public class Cidade {
     public String toString() {
         return  "\nidCidade=" + idCidade +
                 "\nNome=" + nome;
+    }
+
+    public Cidade(String nome) {
+        this.nome = nome;
     }
 
     public Cidade(int idCidade, String nome) {

@@ -1,6 +1,7 @@
-package data;
+package frameworks;
 
-import model.Cidade;
+import interfaces.DAO;
+import domain.Cidade;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,18 +9,23 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class CidadeSQLiteDAO implements DAO<Cidade>{
+public class CidadeSQLiteDAO implements DAO<Cidade> {
     @Override
-    public void save(Cidade c) {
-        String sql = "INSERT INTO cidade values (?,?)";
+    public int save(Cidade c) {
+        String sql = "INSERT INTO cidade (nome) values (?)";
+        int generatedId=0;
         try(PreparedStatement stmt=ConnectionFactory.createStatement(sql)) {
-            stmt.setInt(1, c.getIdCidade());
-            stmt.setString(2, c.getNome());
+            stmt.setString(1, c.getNome());
             stmt.executeUpdate();
+
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+                if (generatedKeys.next())
+                    generatedId= generatedKeys.getInt(1);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return generatedId;
     }
 
     @Override

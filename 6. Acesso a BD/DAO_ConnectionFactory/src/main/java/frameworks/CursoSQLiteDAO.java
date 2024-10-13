@@ -1,6 +1,7 @@
-package data;
+package frameworks;
 
-import model.Curso;
+import interfaces.DAO;
+import domain.Curso;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,18 +9,25 @@ import java.util.List;
 import java.util.Optional;
 
 
-public  class CursoSQLiteDAO implements DAO<Curso>{
+public  class CursoSQLiteDAO implements DAO<Curso> {
 
     @Override
-     public  void save(Curso c) {
-        String sql = "INSERT INTO curso values (?,?)";
+     public  int save(Curso c) {
+        String sql = "INSERT INTO curso (nome) values (?)";
+        int generatedId=0;
         try(PreparedStatement stmt=ConnectionFactory.createStatement(sql)){
-            stmt.setInt(1,c.getIdCurso());
-            stmt.setString(2,c.getNome());
+            stmt.setString(1,c.getNome());
             stmt.executeUpdate();
+
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next())
+                generatedId=generatedKeys.getInt(1);
+
+
         }catch (SQLException e) {
             e.printStackTrace();
         }
+        return  generatedId;
     }
 
     @Override
@@ -53,8 +61,8 @@ public  class CursoSQLiteDAO implements DAO<Curso>{
         String sql = "SELECT * FROM curso WHERE idCurso=?";
         try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
             stmt.setInt(1, codCur);
-            ResultSet rs = stmt.executeQuery();
 
+            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 Curso c = new Curso(rs.getInt("idCurso"), rs.getString("nome"));
                 return Optional.of(c);

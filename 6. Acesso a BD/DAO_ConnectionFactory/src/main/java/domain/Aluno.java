@@ -1,4 +1,4 @@
-package model;
+package domain;
 
 public class Aluno   {
     private int idAluno;
@@ -16,6 +16,12 @@ public class Aluno   {
                 "\nCidade=" + cidade.getNome();
     }
 
+    public Aluno(String prontuario, String nome, Curso curso, Cidade cidade) {
+        this.prontuario = prontuario;
+        this.nome = nome;
+        this.curso = curso;
+        this.cidade = cidade;
+    }
 
     public Aluno(int idAluno, String prontuario, String nome, Curso curso, Cidade cidade) {
         this.idAluno = idAluno;

@@ -1,53 +1,65 @@
-import data.*;
-import model.Aluno;
-import model.Cidade;
-import model.Curso;
-import java.util.List;
+import domain.Aluno;
+import domain.Cidade;
+import domain.Curso;
+import frameworks.*;
+import interfaces.Repository;
+import usecases.AlunoUseCase;
+import usecases.CidadeUseCase;
+import usecases.CursoUseCase;
+
+import java.util.Scanner;
+
 
 public class Main {
+
     public static void main(String[] args) {
-         Curso curso1 = new Curso(100,"Java");
-         Curso curso2 = new Curso(200,"POO");
+        CursoSQLiteDAO cursoDAO = new CursoSQLiteDAO();
+        Repository<Curso> cursoRepo = new CursoRepository(cursoDAO);
+        CursoUseCase cursoUseCase = new CursoUseCase(cursoRepo);
 
-         CursoSQLiteDAO cursoDAO = new CursoSQLiteDAO();
-         //Outra forma de instanciar o DAO:
-         //DAO<Curso> cursoDAO = new CursoSQLiteDAO();
+        CidadeSQLiteDAO cidadeDAO = new CidadeSQLiteDAO();
+        Repository<Cidade> cidadeRepo = new CidadeRepository(cidadeDAO);
+        CidadeUseCase cidadeUseCase = new CidadeUseCase(cidadeRepo);
 
-         cursoDAO.save(curso1);
-         cursoDAO.save(curso2);
+        AlunoSQLiteDAO alunoDAO = new AlunoSQLiteDAO();
+        Repository<Aluno> alunoRepo = new AlunoRepository(alunoDAO);
+        AlunoUseCase alunoUseCase = new AlunoUseCase(alunoRepo);
 
-        
+        Curso curso1 = new Curso("Java");
+        Curso curso2 = new Curso("POO");
+
+        int id;
+        id = cursoUseCase.addCurso(curso1);
+        curso1.setIdCurso(id);
+
+        id = cursoUseCase.addCurso(curso2);
+        curso2.setIdCurso(id);
+
         Cidade cidade1 = new Cidade(10, "São Carlos");
         Cidade cidade2 = new Cidade(20, "Araraquara");
 
-        CidadeSQLiteDAO cidadeDAO = new CidadeSQLiteDAO();
-        //Outra forma de instanciar o DAO:
-        //DAO<Cidade> cidadeDAO = new CidadeSQLiteDAO();
-        cidadeDAO.save(cidade1);
-        cidadeDAO.save(cidade2);
+        id = cidadeUseCase.addCidade(cidade1);
+        cidade1.setIdCidade(id);
 
-        Aluno a1 = new Aluno(1,"1111","Maria",curso1,cidade1);
-        Aluno a2 = new Aluno(2,"2222","João",curso2,cidade2);
+        id = cidadeUseCase.addCidade(cidade2);
+        cidade2.setIdCidade(id);
 
-        AlunoSQLiteDAO alunoDAO = new AlunoSQLiteDAO();
-        //Outra forma de instanciar o DAO:
-        //DAO<Aluno> alunoDAO = new AlunoSQLiteDAO();
+        Aluno aluno1 = new Aluno("1111", "Maria", curso1, cidade1);
+        Aluno aluno2 = new Aluno("2222", "João", curso2, cidade2);
 
-        alunoDAO.save(a1);
-        alunoDAO.save(a2);
+        id = alunoUseCase.addAluno(aluno1);
+        aluno1.setIdAluno(id);
+        id = alunoUseCase.addAluno(aluno2);
+        aluno2.setIdAluno(id);
 
+        for (Curso curso : cursoUseCase.getAllCursos())
+            System.out.println(curso);
 
-        List<Curso> listaCursos=cursoDAO.findAll();
-        for (Curso c : listaCursos )
-            System.out.println(c);
+        for (Cidade cidade : cidadeUseCase.getAllCidades())
+            System.out.println(cidade);
 
-        List<Cidade> listaCidades=cidadeDAO.findAll();
-        for (Cidade c : listaCidades )
-            System.out.println(c);
-
-        List<Aluno> listaAlunos=alunoDAO.findAll();
-        for (Aluno a : listaAlunos )
-            System.out.println(a);
+        for (Aluno aluno : alunoUseCase.getAllAlunos())
+            System.out.println(aluno);
 
     }
 }

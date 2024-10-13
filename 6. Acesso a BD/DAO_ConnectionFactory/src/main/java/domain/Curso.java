@@ -1,4 +1,4 @@
-package model;
+package domain;
 
 public class Curso {
     private int idCurso;
@@ -9,6 +9,10 @@ public class Curso {
         return "\nidCurso=" + idCurso +
                 "\nNome=" + nome ;
 
+    }
+
+    public Curso(String nome) {
+        this.nome = nome;
     }
 
     public Curso(int idCurso, String nome) {
