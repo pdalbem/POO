@@ -1,6 +1,5 @@
-package frameworks;
+package adapters;
 
-import interfaces.DAO;
 import domain.Aluno;
 import domain.Cidade;
 import domain.Curso;

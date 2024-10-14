@@ -1,4 +1,4 @@
-package interfaces;
+package adapters;
 
 import java.util.List;
 import java.util.Optional;

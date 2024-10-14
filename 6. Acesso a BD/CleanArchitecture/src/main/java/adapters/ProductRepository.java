@@ -1,8 +1,6 @@
-package frameworks;
+package adapters;
 
 import entity.Product;
-import interfaces.DAO;
-import interfaces.Repository;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
 package usecase;
 
 import entity.Product;
-import interfaces.Repository;
+import adapters.Repository;
 
 import java.util.List;
 
-public class ProductService {
+public class ProductUseCase {
     private final Repository repository;
 
-    public ProductService(Repository repository) {
+    public ProductUseCase(Repository repository) {
         this.repository = repository;
     }
 

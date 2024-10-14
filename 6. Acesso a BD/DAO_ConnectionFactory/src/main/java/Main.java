@@ -1,13 +1,11 @@
 import domain.Aluno;
 import domain.Cidade;
 import domain.Curso;
-import frameworks.*;
-import interfaces.Repository;
+import adapters.*;
+import adapters.Repository;
 import usecases.AlunoUseCase;
 import usecases.CidadeUseCase;
 import usecases.CursoUseCase;
-
-import java.util.Scanner;
 
 
 public class Main {

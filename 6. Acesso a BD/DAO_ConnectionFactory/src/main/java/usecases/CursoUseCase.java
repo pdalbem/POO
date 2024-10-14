@@ -1,7 +1,7 @@
 package usecases;
 
 import domain.Curso;
-import interfaces.Repository;
+import adapters.Repository;
 
 import java.util.List;
 import java.util.Optional;

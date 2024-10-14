@@ -1,4 +1,4 @@
-package frameworks;
+package adapters;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,6 +1,5 @@
-package frameworks;
+package adapters;
 
-import interfaces.DAO;
 import domain.Cidade;
 
 import java.sql.*;

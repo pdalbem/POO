@@ -1,8 +1,8 @@
-package interfaces;
+package adapters;
 
 import java.util.List;
 
-public interface DAO <T>{
+public interface Repository<T> {
     void save(T type);
     List<T> findAll();
 }

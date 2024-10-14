@@ -1,7 +1,6 @@
-package frameworks;
+package adapters;
 
 import entity.Product;
-import interfaces.DAO;
 
 import java.sql.*;
 import java.util.ArrayList;

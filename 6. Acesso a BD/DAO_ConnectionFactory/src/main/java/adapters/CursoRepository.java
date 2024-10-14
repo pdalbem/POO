@@ -1,8 +1,6 @@
-package frameworks;
+package adapters;
 
 import domain.Curso;
-import interfaces.DAO;
-import interfaces.Repository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,9 +1,9 @@
-package frameworks;
-
+import adapters.DAO;
+import adapters.PostgresProductDAO;
+import adapters.ProductRepository;
+import adapters.Repository;
 import entity.Product;
-import interfaces.DAO;
-import interfaces.Repository;
-import usecase.ProductService;
+import usecase.ProductUseCase;
 
 import java.util.List;
 import java.util.Scanner;
@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         DAO<Product> productDAO = new PostgresProductDAO();
         Repository<Product> productRepository = new ProductRepository(productDAO);
-        ProductService productService = new ProductService(productRepository);
+        ProductUseCase productUseCase = new ProductUseCase(productRepository);
 
         Scanner scanner=new Scanner(System.in);
         System.out.println("Digite o ID: ");
@@ -24,9 +24,9 @@ public class Main {
 
         Product newProduct = new Product(id,name,price);
 
-        productService.addProduct(newProduct);
+        productUseCase.addProduct(newProduct);
 
-        List<Product> products = productService.getAllProducts();
+        List<Product> products = productUseCase.getAllProducts();
         products.forEach(System.out::println);
 
     }
