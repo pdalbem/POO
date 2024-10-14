@@ -13,8 +13,9 @@ public class AlunoRepository implements Repository<Aluno> {
     }
 
     @Override
-    public int save(Aluno aluno) {
-       return dao.save(aluno);
+    public void save(Aluno aluno) {
+       int id= dao.save(aluno);
+       aluno.setIdAluno(id);
     }
 
     @Override

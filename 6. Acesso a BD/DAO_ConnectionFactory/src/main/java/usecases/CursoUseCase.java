@@ -13,8 +13,8 @@ public class CursoUseCase {
         this.repository = repository;
     }
 
-    public int addCurso(Curso c){
-        return repository.save(c);
+    public void addCurso(Curso c){
+         repository.save(c);
     }
 
     public void updateCurso(Curso c){

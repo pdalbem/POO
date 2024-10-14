@@ -13,8 +13,8 @@ public class AlunoUseCase {
         this.repository = repository;
     }
 
-    public int addAluno(Aluno c){
-        return repository.save(c);
+    public void addAluno(Aluno c){
+         repository.save(c);
     }
 
     public void updateAluno(Aluno c){

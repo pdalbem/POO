@@ -13,8 +13,9 @@ public class CursoRepository implements Repository<Curso> {
     }
 
     @Override
-    public int save(Curso curso) {
-        return dao.save(curso);
+    public void save(Curso curso) {
+        int id= dao.save(curso);
+        curso.setIdCurso(id);
     }
 
     @Override

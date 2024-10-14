@@ -26,29 +26,20 @@ public class Main {
         Curso curso1 = new Curso("Java");
         Curso curso2 = new Curso("POO");
 
-        int id;
-        id = cursoUseCase.addCurso(curso1);
-        curso1.setIdCurso(id);
-
-        id = cursoUseCase.addCurso(curso2);
-        curso2.setIdCurso(id);
+        cursoUseCase.addCurso(curso1);
+        cursoUseCase.addCurso(curso2);
 
         Cidade cidade1 = new Cidade(10, "São Carlos");
         Cidade cidade2 = new Cidade(20, "Araraquara");
 
-        id = cidadeUseCase.addCidade(cidade1);
-        cidade1.setIdCidade(id);
-
-        id = cidadeUseCase.addCidade(cidade2);
-        cidade2.setIdCidade(id);
+        cidadeUseCase.addCidade(cidade1);
+        cidadeUseCase.addCidade(cidade2);
 
         Aluno aluno1 = new Aluno("1111", "Maria", curso1, cidade1);
         Aluno aluno2 = new Aluno("2222", "João", curso2, cidade2);
 
-        id = alunoUseCase.addAluno(aluno1);
-        aluno1.setIdAluno(id);
-        id = alunoUseCase.addAluno(aluno2);
-        aluno2.setIdAluno(id);
+        alunoUseCase.addAluno(aluno1);
+        alunoUseCase.addAluno(aluno2);
 
         for (Curso curso : cursoUseCase.getAllCursos())
             System.out.println(curso);

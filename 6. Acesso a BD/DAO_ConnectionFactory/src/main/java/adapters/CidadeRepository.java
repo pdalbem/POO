@@ -13,8 +13,10 @@ public class CidadeRepository implements Repository<Cidade> {
     }
 
     @Override
-    public int save(Cidade cidade) {
-        return dao.save(cidade);
+    public void save(Cidade cidade) {
+
+        int id= dao.save(cidade);
+        cidade.setIdCidade(id);
     }
 
     @Override

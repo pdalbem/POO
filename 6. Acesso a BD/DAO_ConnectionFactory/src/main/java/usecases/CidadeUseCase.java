@@ -13,8 +13,8 @@ public class CidadeUseCase {
         this.repository = repository;
     }
 
-    public int addCidade(Cidade c){
-        return repository.save(c);
+    public void addCidade(Cidade c){
+         repository.save(c);
     }
 
     public void updateCidade(Cidade c){
