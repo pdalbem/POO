@@ -1,4 +1,4 @@
-package domain;
+package domain.entity;
 
 public class Curso {
     private int idCurso;

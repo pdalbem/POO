@@ -1,14 +1,17 @@
-package adapters;
+package adapters.repository;
 
-import domain.Aluno;
+import adapters.dao.AlunoDAO;
+import adapters.dao.DAO;
+import domain.entity.Aluno;
+import domain.repository.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class AlunoRepository implements Repository<Aluno> {
-    private final DAO<Aluno> dao;
+public class AlunoRepositoryImpl implements AlunoRepository {
+    private final AlunoDAO dao;
 
-    public AlunoRepository(DAO<Aluno> dao) {
+    public AlunoRepositoryImpl(AlunoDAO dao) {
         this.dao = dao;
     }
 
@@ -36,5 +39,10 @@ public class AlunoRepository implements Repository<Aluno> {
     @Override
     public List<Aluno> findAll() {
         return dao.findAll();
+    }
+
+    @Override
+    public Optional<Aluno> findByProntuario(String prontuario) {
+        return dao.findByProntuario(prontuario);
     }
 }

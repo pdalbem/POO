@@ -1,6 +1,7 @@
-package adapters;
+package adapters.dao;
 
-import domain.Cidade;
+import adapters.ConnectionFactory;
+import domain.entity.Cidade;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class CidadeSQLiteDAO implements DAO<Cidade> {
+public class CidadeDAOImpl implements CidadeDAO {
     @Override
     public int save(Cidade c) {
         String sql = "INSERT INTO cidade (nome) values (?)";
         int generatedId=0;
-        try(PreparedStatement stmt=ConnectionFactory.createStatement(sql)) {
+        try(PreparedStatement stmt= ConnectionFactory.createStatement(sql)) {
             stmt.setString(1, c.getNome());
             stmt.executeUpdate();
 

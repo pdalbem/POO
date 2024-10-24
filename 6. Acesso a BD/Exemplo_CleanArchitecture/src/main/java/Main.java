@@ -1,8 +1,9 @@
-import domain.Aluno;
-import domain.Cidade;
-import domain.Curso;
-import adapters.*;
-import adapters.Repository;
+import adapters.dao.*;
+import adapters.repository.*;
+import domain.entity.Aluno;
+import domain.entity.Cidade;
+import domain.entity.Curso;
+import domain.repository.Repository;
 import usecases.AlunoUseCase;
 import usecases.CidadeUseCase;
 import usecases.CursoUseCase;
@@ -11,16 +12,16 @@ import usecases.CursoUseCase;
 public class Main {
 
     public static void main(String[] args) {
-        CursoSQLiteDAO cursoDAO = new CursoSQLiteDAO();
-        Repository<Curso> cursoRepo = new CursoRepository(cursoDAO);
+        CursoDAO cursoDAO = new CursoDAOImpl();
+        CursoRepository cursoRepo = new CursoRepositoryImpl(cursoDAO);
         CursoUseCase cursoUseCase = new CursoUseCase(cursoRepo);
 
-        CidadeSQLiteDAO cidadeDAO = new CidadeSQLiteDAO();
-        Repository<Cidade> cidadeRepo = new CidadeRepository(cidadeDAO);
+        CidadeDAO cidadeDAO = new CidadeDAOImpl();
+        CidadeRepository cidadeRepo = new CidadeRepositoryImpl(cidadeDAO);
         CidadeUseCase cidadeUseCase = new CidadeUseCase(cidadeRepo);
 
-        AlunoSQLiteDAO alunoDAO = new AlunoSQLiteDAO();
-        Repository<Aluno> alunoRepo = new AlunoRepository(alunoDAO);
+        AlunoDAO alunoDAO = new AlunoDAOImpl();
+        AlunoRepository alunoRepo = new AlunoRepositoryImpl(alunoDAO);
         AlunoUseCase alunoUseCase = new AlunoUseCase(alunoRepo);
 
         Curso curso1 = new Curso("Java");

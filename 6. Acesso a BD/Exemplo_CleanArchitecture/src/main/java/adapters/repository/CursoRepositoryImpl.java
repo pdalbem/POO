@@ -1,14 +1,15 @@
-package adapters;
+package adapters.repository;
 
-import domain.Curso;
+import adapters.dao.CursoDAO;
+import domain.entity.Curso;
 
 import java.util.List;
 import java.util.Optional;
 
-public class CursoRepository implements Repository<Curso> {
-    private final DAO<Curso> dao;
+public class CursoRepositoryImpl implements CursoRepository{
+    private final CursoDAO dao;
 
-    public CursoRepository(DAO<Curso> dao) {
+    public CursoRepositoryImpl(CursoDAO dao) {
         this.dao = dao;
     }
 
@@ -36,5 +37,10 @@ public class CursoRepository implements Repository<Curso> {
     @Override
     public List<Curso> findAll() {
         return dao.findAll();
+    }
+
+    @Override
+    public Optional<Curso> findByName(String name) {
+        return dao.findByName(name);
     }
 }

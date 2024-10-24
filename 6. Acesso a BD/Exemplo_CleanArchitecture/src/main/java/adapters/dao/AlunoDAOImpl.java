@@ -1,8 +1,9 @@
-package adapters;
+package adapters.dao;
 
-import domain.Aluno;
-import domain.Cidade;
-import domain.Curso;
+import adapters.ConnectionFactory;
+import domain.entity.Aluno;
+import domain.entity.Cidade;
+import domain.entity.Curso;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class AlunoSQLiteDAO implements DAO<Aluno> {
+public class AlunoDAOImpl implements AlunoDAO {
     @Override
     public int save(Aluno a) {
         String sql = "INSERT INTO aluno (prontuario, nome, curso, cidade) values (?,?,?,?)";
@@ -69,8 +70,8 @@ public class AlunoSQLiteDAO implements DAO<Aluno> {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Curso curso = new CursoSQLiteDAO().findById(rs.getInt("curso")).orElse(null);
-                Cidade cidade = new CidadeSQLiteDAO().findById(rs.getInt("cidade")).orElse(null);
+                Curso curso = new CursoDAOImpl().findById(rs.getInt("curso")).orElse(null);
+                Cidade cidade = new CidadeDAOImpl().findById(rs.getInt("cidade")).orElse(null);
                 Aluno a = new Aluno(rs.getInt("idAluno"),
                         rs.getString("prontuario"),
                         rs.getString("nome"),
@@ -90,8 +91,8 @@ public class AlunoSQLiteDAO implements DAO<Aluno> {
         try(PreparedStatement stmt = ConnectionFactory.createStatement(sql)){
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                Curso curso = new CursoSQLiteDAO().findById(rs.getInt("curso")).orElse(null);
-                Cidade cidade = new CidadeSQLiteDAO().findById(rs.getInt("cidade")).orElse(null);
+                Curso curso = new CursoDAOImpl().findById(rs.getInt("curso")).orElse(null);
+                Cidade cidade = new CidadeDAOImpl().findById(rs.getInt("cidade")).orElse(null);
                 Aluno a = new Aluno(rs.getInt("idAluno"),
                         rs.getString("prontuario"),
                         rs.getString("nome"),
@@ -103,5 +104,27 @@ public class AlunoSQLiteDAO implements DAO<Aluno> {
             e.printStackTrace();
         }
         return listaAlunos;
+    }
+
+    @Override
+    public Optional<Aluno> findByProntuario(String prontuario) {
+        String sql = "SELECT * FROM aluno WHERE prontuario=?";
+        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
+            stmt.setString(1, prontuario);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Curso curso = new CursoDAOImpl().findById(rs.getInt("curso")).orElse(null);
+                Cidade cidade = new CidadeDAOImpl().findById(rs.getInt("cidade")).orElse(null);
+                Aluno a = new Aluno(rs.getInt("idAluno"),
+                        rs.getString("prontuario"),
+                        rs.getString("nome"),
+                        curso, cidade);
+                return Optional.of(a);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 }

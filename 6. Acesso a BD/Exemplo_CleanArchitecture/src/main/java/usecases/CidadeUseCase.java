@@ -1,15 +1,16 @@
 package usecases;
 
-import domain.Cidade;
-import adapters.Repository;
+import adapters.repository.CidadeRepository;
+import domain.entity.Cidade;
+import domain.repository.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 public class CidadeUseCase {
-    private final Repository<Cidade> repository;
+    private final CidadeRepository repository;
 
-    public CidadeUseCase(Repository<Cidade> repository) {
+    public CidadeUseCase(CidadeRepository repository) {
         this.repository = repository;
     }
 

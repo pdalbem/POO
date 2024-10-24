@@ -1,15 +1,16 @@
 package usecases;
 
-import domain.Curso;
-import adapters.Repository;
+import adapters.repository.CursoRepository;
+import domain.entity.Curso;
+import domain.repository.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 public class CursoUseCase {
-    private final Repository<Curso> repository;
+    private final CursoRepository repository;
 
-    public CursoUseCase(Repository<Curso> repository) {
+    public CursoUseCase(CursoRepository repository) {
         this.repository = repository;
     }
 
@@ -32,6 +33,8 @@ public class CursoUseCase {
     public List<Curso> getAllCursos(){
        return  repository.findAll();
     }
+
+    public  Optional<Curso> findByName(String name){return repository.findByName(name);}
 
 
 }

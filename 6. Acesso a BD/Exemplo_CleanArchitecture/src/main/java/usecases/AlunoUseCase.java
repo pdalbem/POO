@@ -1,15 +1,16 @@
 package usecases;
 
-import domain.Aluno;
-import adapters.Repository;
+import adapters.repository.AlunoRepository;
+import domain.entity.Aluno;
+import domain.repository.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 public class AlunoUseCase {
-    private final Repository<Aluno> repository;
+    private final AlunoRepository repository;
 
-    public AlunoUseCase(Repository<Aluno> repository) {
+    public AlunoUseCase(AlunoRepository repository) {
         this.repository = repository;
     }
 
@@ -31,5 +32,9 @@ public class AlunoUseCase {
 
     public List<Aluno> getAllAlunos(){
         return  repository.findAll();
+    }
+
+    public Optional<Aluno> findByProntuario(String prontuario){
+        return repository.findByProntuario(prontuario);
     }
 }

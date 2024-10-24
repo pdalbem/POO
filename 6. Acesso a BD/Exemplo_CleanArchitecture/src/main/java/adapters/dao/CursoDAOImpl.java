@@ -1,6 +1,7 @@
-package adapters;
+package adapters.dao;
 
-import domain.Curso;
+import adapters.ConnectionFactory;
+import domain.entity.Curso;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,36 +9,34 @@ import java.util.List;
 import java.util.Optional;
 
 
-public  class CursoSQLiteDAO implements DAO<Curso> {
+public class CursoDAOImpl implements CursoDAO {
 
     @Override
-     public  int save(Curso c) {
+    public int save(Curso c) {
         String sql = "INSERT INTO curso (nome) values (?)";
-        int generatedId=0;
-        try(PreparedStatement stmt=ConnectionFactory.createStatement(sql)){
-            stmt.setString(1,c.getNome());
+        int generatedId = 0;
+        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
+            stmt.setString(1, c.getNome());
             stmt.executeUpdate();
 
             ResultSet generatedKeys = stmt.getGeneratedKeys();
             if (generatedKeys.next())
-                generatedId=generatedKeys.getInt(1);
+                generatedId = generatedKeys.getInt(1);
 
-
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return  generatedId;
+        return generatedId;
     }
 
     @Override
     public void update(Curso c) {
         String sql = "UPDATE curso SET nome=? WHERE idCurso=?";
-        try(PreparedStatement stmt=ConnectionFactory.createStatement(sql)){
-            stmt.setString(1,c.getNome());
-            stmt.setInt(2,c.getIdCurso());
+        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
+            stmt.setString(1, c.getNome());
+            stmt.setInt(2, c.getIdCurso());
             stmt.executeUpdate();
-        }
-         catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -46,11 +45,10 @@ public  class CursoSQLiteDAO implements DAO<Curso> {
     public void delete(Curso c) {
         String sql = "DELETE FROM curso WHERE idCurso=?";
 
-        try(PreparedStatement stmt = ConnectionFactory.createStatement(sql)){
-            stmt.setInt(1,c.getIdCurso());
+        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
+            stmt.setInt(1, c.getIdCurso());
             stmt.executeUpdate();
-        }
-       catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -76,8 +74,8 @@ public  class CursoSQLiteDAO implements DAO<Curso> {
     @Override
     public List<Curso> findAll() {
         String sql = "SELECT * FROM curso";
-        List<Curso> listaCursos =new ArrayList<>();
-        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)){
+        List<Curso> listaCursos = new ArrayList<>();
+        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Curso c = new Curso(rs.getInt("idCurso"), rs.getString("nome"));
@@ -87,5 +85,22 @@ public  class CursoSQLiteDAO implements DAO<Curso> {
             e.printStackTrace();
         }
         return listaCursos;
+    }
+
+    @Override
+    public Optional<Curso> findByName(String name) {
+        String sql = "SELECT * FROM curso WHERE nome=?";
+        try (PreparedStatement stmt = ConnectionFactory.createStatement(sql)) {
+            stmt.setString(1, name);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Curso c = new Curso(rs.getInt("idCurso"), rs.getString("nome"));
+                return Optional.of(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 }

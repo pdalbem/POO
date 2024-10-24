@@ -1,4 +1,4 @@
-package adapters;
+package domain.repository;
 
 import java.util.List;
 import java.util.Optional;

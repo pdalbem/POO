@@ -1,14 +1,17 @@
-package adapters;
+package adapters.repository;
 
-import domain.Cidade;
+import adapters.dao.CidadeDAO;
+import adapters.dao.DAO;
+import domain.entity.Cidade;
+import domain.repository.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class CidadeRepository implements Repository<Cidade> {
-    private final DAO<Cidade> dao;
+public class CidadeRepositoryImpl implements CidadeRepository {
+    private final CidadeDAO dao;
 
-    public CidadeRepository(DAO<Cidade> dao) {
+    public CidadeRepositoryImpl(CidadeDAO dao) {
         this.dao = dao;
     }
 
