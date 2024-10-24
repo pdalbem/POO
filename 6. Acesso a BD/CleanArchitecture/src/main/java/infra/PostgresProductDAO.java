@@ -1,6 +1,6 @@
-package adapters;
+package infra;
 
-import entity.Product;
+import domain.entity.Product;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,6 +1,7 @@
-package adapters;
+package infra;
 
-import entity.Product;
+import domain.entity.Product;
+import domain.repository.Repository;
 
 import java.util.List;
 

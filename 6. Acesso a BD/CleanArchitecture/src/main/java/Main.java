@@ -1,8 +1,8 @@
-import adapters.DAO;
-import adapters.PostgresProductDAO;
-import adapters.ProductRepository;
-import adapters.Repository;
-import entity.Product;
+import infra.DAO;
+import infra.PostgresProductDAO;
+import infra.ProductRepository;
+import domain.repository.Repository;
+import domain.entity.Product;
 import usecase.ProductUseCase;
 
 import java.util.List;

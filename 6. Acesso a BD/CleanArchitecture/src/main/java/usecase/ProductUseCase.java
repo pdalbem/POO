@@ -1,7 +1,7 @@
 package usecase;
 
-import entity.Product;
-import adapters.Repository;
+import domain.entity.Product;
+import domain.repository.Repository;
 
 import java.util.List;
 
