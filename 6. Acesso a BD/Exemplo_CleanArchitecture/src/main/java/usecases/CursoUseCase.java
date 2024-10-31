@@ -1,8 +1,7 @@
 package usecases;
 
-import adapters.repository.CursoRepository;
+import domain.repository.CursoRepository;
 import domain.entity.Curso;
-import domain.repository.Repository;
 
 import java.util.List;
 import java.util.Optional;

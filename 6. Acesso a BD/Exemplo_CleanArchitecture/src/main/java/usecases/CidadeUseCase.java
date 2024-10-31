@@ -1,8 +1,7 @@
 package usecases;
 
-import adapters.repository.CidadeRepository;
+import domain.repository.CidadeRepository;
 import domain.entity.Cidade;
-import domain.repository.Repository;
 
 import java.util.List;
 import java.util.Optional;

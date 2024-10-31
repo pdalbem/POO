@@ -1,7 +1,6 @@
-package adapters.repository;
+package domain.repository;
 
 import domain.entity.Aluno;
-import domain.repository.Repository;
 
 import java.util.Optional;
 

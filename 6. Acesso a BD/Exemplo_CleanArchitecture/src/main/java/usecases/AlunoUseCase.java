@@ -1,8 +1,7 @@
 package usecases;
 
-import adapters.repository.AlunoRepository;
+import domain.repository.AlunoRepository;
 import domain.entity.Aluno;
-import domain.repository.Repository;
 
 import java.util.List;
 import java.util.Optional;

@@ -2,11 +2,12 @@ package adapters.repository;
 
 import adapters.dao.CursoDAO;
 import domain.entity.Curso;
+import domain.repository.CursoRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class CursoRepositoryImpl implements CursoRepository{
+public class CursoRepositoryImpl implements CursoRepository {
     private final CursoDAO dao;
 
     public CursoRepositoryImpl(CursoDAO dao) {

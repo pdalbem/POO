@@ -1,9 +1,8 @@
 package adapters.repository;
 
 import adapters.dao.AlunoDAO;
-import adapters.dao.DAO;
 import domain.entity.Aluno;
-import domain.repository.Repository;
+import domain.repository.AlunoRepository;
 
 import java.util.List;
 import java.util.Optional;

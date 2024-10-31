@@ -1,9 +1,8 @@
 package adapters.repository;
 
 import adapters.dao.CidadeDAO;
-import adapters.dao.DAO;
 import domain.entity.Cidade;
-import domain.repository.Repository;
+import domain.repository.CidadeRepository;
 
 import java.util.List;
 import java.util.Optional;
