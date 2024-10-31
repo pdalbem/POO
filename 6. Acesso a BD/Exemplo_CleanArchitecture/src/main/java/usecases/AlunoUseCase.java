@@ -34,7 +34,7 @@ public class AlunoUseCase {
         return  repository.findAll();
     }
 
-    public Optional<Aluno> findByProntuario(String prontuario){
+    public Optional<Aluno> getAlunoByProntuario(String prontuario){
         return repository.findByProntuario(prontuario);
     }
 }

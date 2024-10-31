@@ -1,8 +1,5 @@
 package infra;
 
-
-
-
 import domain.entity.Product;
 import domain.repository.Repository;
 

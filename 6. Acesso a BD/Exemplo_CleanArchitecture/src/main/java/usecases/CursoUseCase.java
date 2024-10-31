@@ -34,7 +34,7 @@ public class CursoUseCase {
        return  repository.findAll();
     }
 
-    public  Optional<Curso> findByName(String name){return repository.findByName(name);}
+    public  Optional<Curso> getCursoByName(String name){return repository.findByName(name);}
 
 
 }
