@@ -29,6 +29,7 @@ public class Main {
         Curso curso1 = new Curso("Java");
         Curso curso2 = new Curso("POO");
 
+
         cursoUseCase.addCurso(curso1);
         cursoUseCase.addCurso(curso2);
 
