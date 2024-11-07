@@ -1,7 +1,7 @@
 package adapters.dao;
 
 import domain.entity.Aluno;
-import domain.entity.Curso;
+
 
 import java.util.Optional;
 
