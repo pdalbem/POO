@@ -8,6 +8,11 @@ public class Paciente extends Pessoa{
         this.telefone = telefone;
     }
 
+    public Paciente(int id, String nome, String telefone) {
+        super(id, nome);
+        this.telefone = telefone;
+    }
+
     public String getTelefone() {
         return telefone;
     }
@@ -18,8 +23,6 @@ public class Paciente extends Pessoa{
 
     @Override
     public String toString() {
-        return "Paciente{" +
-                "telefone='" + telefone + '\'' +
-                "} " + super.toString();
+        return "\nPaciente: "+super.toString() + "\nTelefone=" + telefone;
     }
 }

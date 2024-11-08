@@ -4,6 +4,11 @@ public class Especialidade {
     private int id;
     private String descricao;
 
+    public Especialidade(int id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
+
     public Especialidade(String descricao) {
         this.descricao = descricao;
     }
@@ -26,9 +31,8 @@ public class Especialidade {
 
     @Override
     public String toString() {
-        return "Especialidade{" +
-                "id=" + id +
-                ", descricao='" + descricao + '\'' +
-                '}';
+        return "\nEspecialidade" +
+                "\nId=" + id +
+                "\nDescricao=" + descricao;
     }
 }

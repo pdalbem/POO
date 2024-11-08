@@ -8,6 +8,11 @@ public abstract class Pessoa {
         this.nome = nome;
     }
 
+    public Pessoa(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public int getId() {
         return id;
     }
@@ -26,9 +31,6 @@ public abstract class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                '}';
+        return  "\nId=" + id + "\nNome=" + nome;
     }
 }

@@ -14,6 +14,14 @@ public class Consulta {
         this.medico = medico;
     }
 
+    public Consulta(int id, String data, String hora, Paciente paciente, Medico medico) {
+        this.id = id;
+        this.data = data;
+        this.hora = hora;
+        this.paciente = paciente;
+        this.medico = medico;
+    }
+
     public int getId() {
         return id;
     }
@@ -56,12 +64,11 @@ public class Consulta {
 
     @Override
     public String toString() {
-        return "Consulta{" +
-                "id=" + id +
-                ", data='" + data + '\'' +
-                ", hora='" + hora + '\'' +
-                ", paciente=" + paciente +
-                ", medico=" + medico +
-                '}';
+        return "\nConsulta" +
+                "\nId=" + id +
+                "\nData=" + data +
+                "\nHora=" + hora +
+                "\nPaciente=" + paciente.getNome() +
+                "\nMedico=" + medico.getNome() ;
     }
 }
