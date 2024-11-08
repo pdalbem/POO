@@ -53,4 +53,15 @@ public class Consulta {
     public void setMedico(Medico medico) {
         this.medico = medico;
     }
+
+    @Override
+    public String toString() {
+        return "Consulta{" +
+                "id=" + id +
+                ", data='" + data + '\'' +
+                ", hora='" + hora + '\'' +
+                ", paciente=" + paciente +
+                ", medico=" + medico +
+                '}';
+    }
 }

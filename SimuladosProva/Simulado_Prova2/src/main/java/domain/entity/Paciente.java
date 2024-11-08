@@ -15,4 +15,11 @@ public class Paciente extends Pessoa{
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    @Override
+    public String toString() {
+        return "Paciente{" +
+                "telefone='" + telefone + '\'' +
+                "} " + super.toString();
+    }
 }
