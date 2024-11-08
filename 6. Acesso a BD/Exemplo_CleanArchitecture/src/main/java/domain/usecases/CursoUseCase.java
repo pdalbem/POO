@@ -1,4 +1,4 @@
-package usecases;
+package domain.usecases;
 
 import domain.repository.CursoRepository;
 import domain.entity.Curso;

@@ -6,9 +6,9 @@ import domain.entity.Curso;
 import domain.repository.AlunoRepository;
 import domain.repository.CidadeRepository;
 import domain.repository.CursoRepository;
-import usecases.AlunoUseCase;
-import usecases.CidadeUseCase;
-import usecases.CursoUseCase;
+import domain.usecases.AlunoUseCase;
+import domain.usecases.CidadeUseCase;
+import domain.usecases.CursoUseCase;
 
 
 public class Main {

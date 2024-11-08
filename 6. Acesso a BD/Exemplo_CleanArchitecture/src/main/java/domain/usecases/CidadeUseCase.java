@@ -1,4 +1,4 @@
-package usecases;
+package domain.usecases;
 
 import domain.repository.CidadeRepository;
 import domain.entity.Cidade;

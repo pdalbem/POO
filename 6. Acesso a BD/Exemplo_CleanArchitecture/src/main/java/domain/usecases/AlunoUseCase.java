@@ -1,4 +1,4 @@
-package usecases;
+package domain.usecases;
 
 import domain.repository.AlunoRepository;
 import domain.entity.Aluno;
