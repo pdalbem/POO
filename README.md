@@ -19,6 +19,14 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Atributos e métodos static
 * Array de objetos
 
+[3. Associação entre Classes](https://github.com/pdalbem/POO/tree/main/3.%20Associa%C3%A7%C3%A3o%20entre%20Classes)
+* Associação
+* Multiplicidade
+* Navegabilidade
+* Implementação usando array
+* Implementação usando API Collections
+
+
 [API Collections](https://github.com/pdalbem/POO/tree/main/Collections)
 * List
 * Map
