@@ -37,3 +37,6 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * LocalDate
 * LocalTime
 * LocalDateTime
+* Duration
+* Period
+* Date/Time Formatting
