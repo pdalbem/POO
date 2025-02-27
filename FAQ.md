@@ -6,10 +6,11 @@ A Programação Orientada a Objetos (POO) é um estilo de programação que estr
 
 ### Quais os pilares da POO?
 São 4 pilares:
-Abstração: Refere-se à capacidade de esconder a complexidade e mostrar apenas as informações essenciais. 
-Encapsulamento: Refere-se ao conceito de esconder os detalhes internos de um objeto e fornecer métodos públicos para interagir com ele, garantindo maior controle sobre como os dados são acessados ou modificados.
-Herança: Permite que uma classe herde atributos e métodos de outra classe. A classe que herda é chamada de classe filha, e a classe original é a classe mãe.
-Polimorfismo: Permite que diferentes classes implementem o mesmo método de maneira distinta. O polimorfismo permite que o código trate objetos de diferentes tipos de maneira uniforme.
+
+* Abstração: Refere-se à capacidade de esconder a complexidade e mostrar apenas as informações essenciais. 
+* Encapsulamento: Refere-se ao conceito de esconder os detalhes internos de um objeto e fornecer métodos públicos para interagir com ele, garantindo maior controle sobre como os dados são acessados ou modificados.
+* Herança: Permite que uma classe herde atributos e métodos de outra classe. A classe que herda é chamada de classe filha, e a classe original é a classe mãe.
+* Polimorfismo: Permite que diferentes classes implementem o mesmo método de maneira distinta. O polimorfismo permite que o código trate objetos de diferentes tipos de maneira uniforme.
 
 ### O que são objetos?
 Objetos são representações computacionais (domínio da solução) de entidades (concretas ou abstratas) do mundo real (domínio do problema). Possuem atributos e comportamentos. Um objeto é uma instância de uma classe.
