@@ -38,11 +38,12 @@ Associação é um relacionamento entre duas ou mais classes, indicando que obje
 
 ### O que é multiplicidade em uma associação?
 Multiplicidade especifica o número de objetos de uma classe que podem se relacionar com um objeto de outra classe. As multiplicidades mais comuns são:
-1: Um objeto se relaciona com exatamente um objeto.
-0..1: Um objeto se relaciona com zero ou um objeto.
-* (ou 0..*): Um objeto se relaciona com zero ou muitos objetos.
-1..*: Um objeto se relaciona com um ou muitos objetos.
-n..m: Um objeto se relaciona com no mínimo "n" e no máximo "m" objetos.
+
+* 1: Um objeto se relaciona com exatamente um objeto.
+* 0..1: Um objeto se relaciona com zero ou um objeto.
+* \* (ou 0..*): Um objeto se relaciona com zero ou muitos objetos.
+* 1..*: Um objeto se relaciona com um ou muitos objetos.
+* n..m: Um objeto se relaciona com no mínimo "n" e no máximo "m" objetos.
 
 ### O que é navegabilidade em uma associação?
 Navegabilidade define a direção em que a associação pode ser percorrida. Em outras palavras, indica se um objeto de uma classe pode acessar ou "conhecer" objetos da outra classe. A navegabilidade pode ser unidirecional ou bidirecional.
