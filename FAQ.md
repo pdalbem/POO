@@ -80,6 +80,21 @@ Carro carro1 = new Carro();
 Carro carro2 = new Carro("IFS-0P10","Fusca", 1990, "branco");
 ```
 
+### O que são modificadores de acesso?
+Modificadores de acesso são palavras-chave que controlam a visibilidade (acesso) de classes, atributos e métodos dentro de um programa. Eles definem quem pode acessar ou modificar esses elementos.
+
+* public: Acesso de qualquer classe, mesmo de pacotes diferentes.
+* private: 	Acesso apenas dentro da própria classe.
+* protected: Acesso na mesma classe, nas subclasses e no mesmo pacote.
+* default:	Acesso apenas dentro do mesmo pacote.
+
+```java
+public class Exemplo {
+    public int atributoPublico;
+    private int atributoPrivado;
+    protected int atributoProtegido;
+    int atributoPadrao; // Acesso default (package-private)
+```
 
 ### O que é encapsulamento?
 Encapsulamento é o princípio de esconder os detalhes internos de uma classe e fornecer métodos públicos para acessar e modificar os dados de forma controlada. Isso garante que o estado do objeto seja protegido e modificado de maneira segura.
@@ -243,3 +258,202 @@ Multiplicidade especifica o número de objetos de uma classe que podem se relaci
 
 ### O que é navegabilidade em uma associação?
 Navegabilidade define a direção em que a associação pode ser percorrida. Em outras palavras, indica se um objeto de uma classe pode acessar ou "conhecer" objetos da outra classe. A navegabilidade pode ser unidirecional ou bidirecional.
+
+### O que é Herança?
+Herança é um mecanismo que permite a criação de uma nova classe baseada em uma classe existente. A nova classe (chamada subclasse ou classe filha) herda os atributos e métodos da classe existente (chamada superclasse ou classe pai), permitindo a reutilização de código.
+
+```java
+// Classe base (superclasse)
+public class Pessoa {
+    private String nome;
+    private String documento;
+
+    public Pessoa(String nome, String documento) {
+        this.nome = nome;
+        this.documento = documento;
+    }
+    ...
+}
+
+// Subclasse
+public class Aluno extends Pessoa {
+    private String curso;
+
+    public Aluno(String nome, String documento, String curso) {
+        super(nome, documento);
+        this.curso = curso;
+    }
+    ...
+}
+
+// Outra subclasse
+public class Professor extends Pessoa {
+    private String disciplina;
+
+    public Professor(String nome, String documento, String disciplina) {
+        super(nome, documento);
+        this.disciplina = disciplina;
+    }
+    ...
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pessoa aluno = new Aluno("Joaquim", "12345", "ADS");
+        Pessoa professor = new Professor("Pablo", "98765", "POO");
+    }
+}
+
+```
+
+
+### O que é Sobrescrita de Método (method overriding)?
+A sobrescrita de método (ou override) ocorre quando uma subclasse fornece sua própria implementação de um método que foi declarado na superclasse. A sobrescrita permite que a subclasse modifique o comportamento do método herdado.
+
+
+```java
+// Classe base (superclasse)
+public class Pessoa {
+    private String nome;
+    private String documento;
+
+    public Pessoa(String nome, String documento) {
+        this.nome = nome;
+        this.documento = documento;
+    }
+
+    public void apresentar() {
+        System.out.println("Meu nome é " + nome + " e meu documento é " + documento);
+    }
+}
+
+// Subclasse
+public class Aluno extends Pessoa {
+    private String curso;
+
+    public Aluno(String nome, String documento, String curso) {
+        super(nome, documento);
+        this.curso = curso;
+    }
+
+    @Override
+    public void apresentar() {
+        super.apresentar();
+        System.out.println("Eu sou aluno do curso de " + curso);
+    }
+}
+
+// Outra subclasse
+public class Professor extends Pessoa {
+    private String disciplina;
+
+    public Professor(String nome, String documento, String disciplina) {
+        super(nome, documento);
+        this.disciplina = disciplina;
+    }
+
+    @Override
+    public void apresentar() {
+        super.apresentar();
+        System.out.println("Eu sou professor de " + disciplina);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pessoa aluno = new Aluno("Joaquim", "12345", "ADS");
+        Pessoa professor = new Professor("Pablo", "98765", "POO");
+
+        aluno.apresentar();  // Saída: Meu nome é Joaquim e meu documento é 12345 | Eu sou aluno do curso de ADS
+        professor.apresentar();  // Saída: Meu nome é Pablo e meu documento é 98765 | Eu sou professor de POO
+    }
+}
+
+```
+
+### O que é uma Classe Abstrata?
+Uma classe abstrata é uma classe que não pode ser instanciada diretamente. Ela é usada como base para outras classes. Ela pode ter métodos abstratos (sem implementação) e métodos concretos (com implementação). Uma classe abstrata serve para garantir que certas funcionalidades sejam implementadas pelas subclasses.
+
+```
+// Classe abstrata
+public abstract class Pessoa {
+    private String nome;
+    private String documento;
+
+    public Pessoa(String nome, String documento) {
+        this.nome = nome;
+        this.documento = documento;
+    }
+}
+```
+
+### O que é um Método Abstrato?
+Um método abstrato é um método declarado em uma classe abstrata, mas sem uma implementação. A implementação do método abstrato é fornecida pelas subclasses da classe abstrata.
+
+
+```
+// Classe abstrata
+public abstract class Pessoa {
+    private String nome;
+    private String documento;
+
+    public Pessoa(String nome, String documento) {
+        this.nome = nome;
+        this.documento = documento;
+    }
+
+    // Método abstrato
+    public abstract void trabalhar(); 
+
+    public void apresentar() {
+        System.out.println("Meu nome é " + nome + " e meu documento é " + documento);
+    }
+}
+
+// Subclasse que implementa o método abstrato
+public class Aluno extends Pessoa {
+    public Aluno(String nome, String documento) {
+        super(nome, documento);
+    }
+
+    @Override
+    public void trabalhar() {
+        System.out.println("Estudando para as provas...");
+    }
+}
+
+// Subclasse que implementa o método abstrato
+public class Professor extends Pessoa {
+    public Professor(String nome, String documento) {
+        super(nome, documento);
+    }
+
+    @Override
+    public void trabalhar() {
+        System.out.println("Ministrando aulas...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pessoa aluno = new Aluno("João", "12345");
+        Pessoa professor = new Professor("Dr. Silva", "98765");
+
+        aluno.trabalhar();  // Saída: Estudando para as provas...
+        professor.trabalhar();  // Saída: Ministrando aulas...
+    }
+}
+
+```
+
+### O que são interfaces?
+Interfaces definem um conjunto de métodos abstratos que uma classe deve implementar. Interfaces permitem criar contratos entre classes e promover a flexibilidade e a extensibilidade do código.
+
+### Qual a diferença entre classe abstrata e interface?
+* Classe abstrata: Pode conter métodos abstratos e métodos concretos (com implementação). Uma classe pode herdar apenas de uma classe abstrata.
+* Interface: Contém apenas métodos abstratos (a partir do Java 8, pode conter métodos default e static). Uma classe pode implementar múltiplas interfaces.
+
+### O que é polimorfismo?
+Polimorfismo é a capacidade de um objeto assumir diferentes formas ou comportamentos. Isso permite que um método seja chamado em objetos de diferentes classes, desde que eles compartilhem uma interface comum ou sejam subclasses de uma mesma superclasse
+
+
