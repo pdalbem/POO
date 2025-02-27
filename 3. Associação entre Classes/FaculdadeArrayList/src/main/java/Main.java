@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
         Aluno a1 = new Aluno("João", "SC12345");
@@ -18,37 +16,30 @@ public class Main {
 
 
         //A associação entre alunos e matrículas e disciplinas e matrículas
-        //pode ser feita via método setMatriculas() de cada classe
-        a1.setMatriculas(List.of(m1));
-        a2.setMatriculas(List.of(m2,m3));
-        a3.setMatriculas(List.of(m4,m5));
+        //pode ser feita via metodo adicionarMatricula(Matricula...m) de cada classe
+         a1.adicionarMatricula(m1);
+         a2.adicionarMatricula(m2,m3);
+         a3.adicionarMatricula(m4,m5);
 
-        d1.setMatriculas(List.of(m1,m2));
-        d2.setMatriculas(List.of(m3,m4));
-        d3.setMatriculas(List.of(m5));
+         d1.adicionarMatricula(m1,m2);
+         d2.adicionarMatricula(m3,m4);
+         d3.adicionarMatricula(m5);
 
-        //OUTRA FORMA: A associação entre alunos e matrículas e disciplinas e matrículas
-        //pode ser feita via método adicionarMatricula() de cada classe
-        //EXEMPLO:
-        // a1.adicionarMatricula(m1);
-        // a2.adicionarMatricula(m2,m3);
-        // a3.adicionarMatricula(m4,m5);
-
-        // d1.adicionarMatricula(m1,m2);
-        // d2.adicionarMatricula(m3,m4);
-        // d3.adicionarMatricula(m5);
-
-
-        //Saber as disciplinas em que Maria está matriculado
+        //Saber as disciplinas em que Maria (objeto a2) está matriculado
+        System.out.println("Disciplinas que "+a2.getNome() + " possui matrícula");
         for (Matricula m : a2.getMatriculas()) {
-            System.out.println(m.getDisciplina().getNomeDisciplina());
-
+            System.out.println("Disciplina: "+m.getDisciplina().getNomeDisciplina());
+            System.out.println("Sigla: "+ m.getDisciplina().getSigla()+"\n");
         }
 
-        //Saber quem está cursando POO
+        //Saber quem está cursando POO (objeto d1)
+        System.out.println("Alunos matriculados em "+d1.getNomeDisciplina());
         for (Matricula m : d1.getMatriculas()) {
-            System.out.println(m.getAluno().getNome());
-            System.out.println(m.getNota());
+            System.out.println("Nome: " +m.getAluno().getNome());
+            System.out.println("Nota: " +m.getNota());
+            System.out.println("Frequência: " +m.getFrequencia());
+            System.out.println("Período: "+m.getPeriodo()+"\n");
+
         }
 
     }

@@ -8,14 +8,8 @@ public class Disciplina {
     private int cargaHoraria;
     private List<Matricula> matriculas= new ArrayList<>();
 
-    public void adicionarMatricula(Matricula m){
-
-        this.matriculas.add(m);
-    }
-
     //Metodo com quantidade variável de parâmetros
     public void adicionarMatricula(Matricula...m){
-
         Collections.addAll(matriculas,m);
     }
 
@@ -23,6 +17,8 @@ public class Disciplina {
         this.matriculas.remove(m);
     }
 
+    // Repare que o construtor não recebe a List<Matricula>.
+    // As matrículas serão informadas pelo adicionarMatricula(Matricula...m)
     public Disciplina(String sigla, String nomeDisciplina, int cargaHoraria) {
         this.sigla = sigla;
         this.nomeDisciplina = nomeDisciplina;
@@ -60,7 +56,8 @@ public class Disciplina {
         return matriculas;
     }
 
-    public void setMatriculas(List<Matricula> matriculas) {
-        this.matriculas = matriculas;
-    }
+    //Não vou precisar. As matriculas serão adicionadas via metodo adicionarMatricula
+   //  public void setMatriculas(List<Matricula> matriculas) {
+  //        this.matriculas = matriculas;
+  //    }
 }
