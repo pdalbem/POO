@@ -17,15 +17,84 @@ Objetos são representações computacionais (domínio da solução) de entidade
 
 ### O que é uma classe?
 uma classe é como um molde ou um modelo para criar objetos. Ela define a estrutura e o comportamento que os objetos terão. Pense em uma classe como uma planta de construção para casas: a planta descreve como as casas serão construídas, mas não é uma casa em si. Os objetos são as casas reais construídas a partir da planta.
-Por exemplo, uma classe Carro pode ter atributos como cor, modelo e ano, e métodos como acelerar() e frear().
+Por exemplo, uma classe Carro pode ter atributos como placa, modelo, ano e cor, e métodos como acelerar() e frear().
+
+```java
+public class Carro {
+    String placa;
+    String modelo;
+    int ano;
+    String cor;
+    
+    public void acelerar(){
+    }
+    
+    public void frear(){
+    }
+}
+```
 
 ### O que é método construtor?
 Um construtor é um método especial usado para inicializar objetos de uma classe. Ele é chamado automaticamente quando um novo objeto é criado. 
 Em Java, o método construtor deve possuir o mesmo nome da classe e não deve ter retorno de valor.
 Construtores podem ter parâmetros para permitir a inicialização com valores específicos.
+Uma classe pode ter quantos métodos construtores forem necessários.
+
+```java
+public class Carro {
+    String placa;
+    String modelo;
+    int ano;
+    String cor;
+    
+    public Carro(){}
+    
+    public Carro(String placa, String modelo, int ano, String cor){
+        this.placa=placa;
+        this.modelo=modelo;
+        this.ano=ano;
+        this.cor=cor;
+    }
+    
+    public Carro(String placa, String modelo){
+        this.placa=placa;
+        this.modelo=modelo;
+    }
+    
+    public void acelerar(){
+    }
+    
+    public void frear(){
+    }
+}
+```
+
+### Como instanciar um objeto?
+Instanciar um objeto significa criar um exemplar concreto de uma classe. Em Java, isso é feito usando a palavra-chave `new` seguida do método construtor da classe.
+
+```java
+Carro carro1 = new Carro();
+Carro carro2 = new Carro("IFS-0P10","Fusca", 1990, "branco");
+```
+
 
 ### O que é encapsulamento?
 Encapsulamento é o princípio de esconder os detalhes internos de uma classe e fornecer métodos públicos para acessar e modificar os dados de forma controlada. Isso garante que o estado do objeto seja protegido e modificado de maneira segura.
+```java
+public class ContaBancaria {
+    private double saldo;
+
+    public void depositar(double valor) {
+        if (valor > 0) {
+            saldo += valor;
+        }
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+}
+```
 
 ### O que é sobrecarga de método (method overloading)?
 Sobrecarga de método é a capacidade de uma classe ter vários métodos com o mesmo nome, mas com parâmetros diferentes (número, tipo ou ordem). O compilador decide qual método chamar com base nos argumentos fornecidos.
