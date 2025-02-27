@@ -42,4 +42,4 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Date/Time Formatting
 
 
-[CONTEUDO](FAQ.md)
+[Frequently Asked Questions (FAQ)](FAQ.md)
