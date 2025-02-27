@@ -94,6 +94,8 @@ public class Exemplo {
     private int atributoPrivado;
     protected int atributoProtegido;
     int atributoPadrao; // Acesso default (package-private)
+
+}    
 ```
 
 ### O que é encapsulamento?
@@ -165,7 +167,7 @@ public class Main {
 
 ```
 
-### O que é sobrecarga de método (method overloading)?
+### O que é sobrecarga de método (_method overloading_)?
 Sobrecarga de método ocorre quando a classe possui vários métodos com o mesmo nome, mas com listas de parâmetros diferentes. Isso permite que um método execute ações diferentes dependendo dos argumentos fornecidos. Uma classe que possui mais de um método construtor, já faz sobrecarga de método.
 
 ```java
@@ -241,7 +243,7 @@ public class Aluno {
 }
 ```
 
-### O que são atributos e métodos static?
+### O que são atributos e métodos _static_?
 São atributos e métodos que pertencem à classe e não a um objeto específico. Eles são compartilhados por todas as instâncias da classe. Atributos estáticos são úteis para armazenar informações que são comuns a todos os objetos da classe. Métodos estáticos são úteis para operações que não dependem do estado de um objeto. São invocados diretamente pela classe, sem a necessidade de criar uma instância. 
 
 ### O que é associação entre classes?
