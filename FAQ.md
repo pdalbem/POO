@@ -80,6 +80,26 @@ Carro carro1 = new Carro();
 Carro carro2 = new Carro("IFS-0P10","Fusca", 1990, "branco");
 ```
 
+### Em Java, o que é a palavra `this`?
+Em Java, a palavra-chave `this` refere-se ao objeto atual da classe onde o código está sendo executado. Ela é usada para distinguir entre variáveis de instância e parâmetros com o mesmo nome, referenciar o objeto atual ou chamar um construtor da mesma classe.
+
+```java
+public class Pessoa {
+    private String nome;
+    private int idade;
+
+    public Pessoa(String nome) {
+        this(nome, 0); // Chama o construtor com dois parâmetros.
+    }
+
+    public Pessoa(String nome, int idade) {
+        this.nome = nome; // 'this.nome' refere-se à variável de instância, enquanto 'nome' refere-se à variável local (parâmetro).
+        this.idade = idade; // 'this.idade' refere-se à variável de instância, enquanto 'idade' refere-se à variável local (parâmetro).
+    }
+}
+```
+
+
 ### O que são modificadores de acesso?
 Modificadores de acesso são palavras-chave que controlam a visibilidade (acesso) de classes, atributos e métodos dentro de um programa. Eles definem quem pode acessar ou modificar esses elementos.
 
@@ -309,7 +329,7 @@ public class Main {
 ```
 
 
-### O que é Sobrescrita de Método (method overriding)?
+### O que é Sobrescrita de Método (_method overriding_)?
 A sobrescrita de método (ou override) ocorre quando uma subclasse fornece sua própria implementação de um método que foi declarado na superclasse. A sobrescrita permite que a subclasse modifique o comportamento do método herdado.
 
 
@@ -458,4 +478,15 @@ Interfaces definem um conjunto de métodos abstratos que uma classe deve impleme
 ### O que é polimorfismo?
 Polimorfismo é a capacidade de um objeto assumir diferentes formas ou comportamentos. Isso permite que um método seja chamado em objetos de diferentes classes, desde que eles compartilhem uma interface comum ou sejam subclasses de uma mesma superclasse
 
+### O que são os princípios SOLID?
+SOLID é uma sigla que representa cinco princípios muito importantes quando desenvolvemos com o paradigma orientado a objetos. Compreender e aplicar esses princípios permitirá  escrever código de melhor qualidade, fácil de entender, manter, testar e escalar. OS princípios são:
+* Single responsibility (Responsabilidade única): Uma classe deve ter apenas uma única responsabilidade. Se uma classe tem uma única responsabilidade, ela tem um único motivo para mudar. Se você precisa alterar uma classe pelos mais variados motivos, você está violando este princípio.
+* Open/closed (Aberto/Fechado): Entidades de software devem estar abertas para extensão, mas fechadas para modificação. As classes NÃO devem ser modificadas se já estiverem bem definidas, mas devem permitir que outras classes herdem suas propriedades. 
+Trata-se também de projetar componentes onde você não precisaria modificá-los ao incluir novas funcionalidades. 
+Assim, é possível adicionar novos comportamentos às classes existentes sem alterar seu código original. Geralmente, isto é feito por meio de herança ou interfaces.
+* Liskov substitution (Substituição de Liskov): Estabelece que os objetos de uma classe base podem ser substituídos por objetos de suas subclasses, sem alterar o comportamento do sistema.
+* Interface segregation (Segregação de interfaces): Nenhuma classe cliente deve ser forçada a implementar métodos que ela não vai usar!!!
+É melhor ter várias interfaces específicas do que uma única interface genérica. 
+Isso permite que as classes implementem apenas os métodos que realmente utilizam, evitando dependências desnecessárias e melhorando a coesão.
+* Dependency inversion (Inversão de dependência): O código deve depender de abstrações (classes abstratas e interfaces) e não de classes concretas. Além disso, as abstrações não devem depender de detalhes. São os detalhes que devem depender das abstrações. Isso promove um design mais flexível e menos acoplado.
 
