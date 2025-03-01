@@ -13,10 +13,12 @@ São 4 pilares:
 * Polimorfismo: Permite que diferentes classes implementem o mesmo método de maneira distinta. O polimorfismo permite que o código trate objetos de diferentes tipos de maneira uniforme.
 
 ### O que são objetos?
-Objetos são representações computacionais (domínio da solução) de entidades (concretas ou abstratas) do mundo real (domínio do problema). Possuem atributos e comportamentos. Um objeto é uma instância de uma classe.
+Objetos são representações computacionais (domínio da solução) de entidades (concretas ou abstratas) do mundo real (domínio do problema). Os objetos possuem **atributos** (características, propriedades) e **comportamentos** (ações que o objeto pode realizar). Por exemplo, um objetco carro possui os atributos placa, marca, ano e cor, e os comportamentos ligar, acelerar, frear, desligar.
+
+Um objeto é uma instância de uma classe.
 
 ### O que é uma classe?
-uma classe é como um molde ou um modelo para criar objetos. Ela define a estrutura e o comportamento que os objetos terão. Pense em uma classe como uma planta de construção para casas: a planta descreve como as casas serão construídas, mas não é uma casa em si. Os objetos são as casas reais construídas a partir da planta.
+Uma classe é como um molde ou um modelo para criar objetos. Ela define a estrutura e o comportamento que os objetos terão. Pense em uma classe como uma planta de construção para casas: a planta descreve como as casas serão construídas, mas não é uma casa em si. Os objetos são as casas reais construídas a partir da planta.
 
 Por exemplo, uma classe Carro pode ter atributos como placa, modelo, ano e cor, e métodos como acelerar() e frear().
 
