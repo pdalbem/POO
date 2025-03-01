@@ -266,6 +266,32 @@ public class Aluno {
 ### O que são atributos e métodos _static_?
 São atributos e métodos que pertencem à classe e não a um objeto específico. Eles são compartilhados por todas as instâncias da classe. Atributos estáticos são úteis para armazenar informações que são comuns a todos os objetos da classe. Métodos estáticos são úteis para operações que não dependem do estado de um objeto. São invocados diretamente pela classe, sem a necessidade de criar uma instância. 
 
+```java
+class Contador {
+    // Atributo static, compartilhado por todas as instâncias da classe
+    private static int count = 0;
+
+    public Contador() {
+        count++;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Contador c1 = new Contador();
+        Contador c2 = new Contador();
+        Contador c3 = new Contador();
+      
+        System.out.println("Número de instâncias de Contador: " + Contador.getCount());
+    }
+}
+
+```
+
 ### O que é associação entre classes?
 Associação é um relacionamento entre duas ou mais classes, indicando que objetos dessas classes se comunicam ou interagem entre si. É uma forma de modelar dependências e conexões no sistema.
 
