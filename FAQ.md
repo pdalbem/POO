@@ -269,6 +269,21 @@ São atributos e métodos que pertencem à classe e não a um objeto específico
 ### O que é associação entre classes?
 Associação é um relacionamento entre duas ou mais classes, indicando que objetos dessas classes se comunicam ou interagem entre si. É uma forma de modelar dependências e conexões no sistema.
 
+```java
+public class Aluno {
+    private String nome;
+    private String pontuario;
+    private Curso cursos; 
+    ...
+}    
+
+public class Curso {
+    private String nome;
+    private List<Aluno> alunos; 
+    ...
+}    
+```
+
 ### O que é multiplicidade em uma associação?
 Multiplicidade especifica o número de objetos de uma classe que podem se relacionar com um objeto de outra classe. As multiplicidades mais comuns são:
 
@@ -396,7 +411,7 @@ public class Main {
 ### O que é uma Classe Abstrata?
 Uma classe abstrata é uma classe que não pode ser instanciada diretamente. Ela é usada como base para outras classes. Ela pode ter métodos abstratos (sem implementação) e métodos concretos (com implementação). Uma classe abstrata serve para garantir que certas funcionalidades sejam implementadas pelas subclasses.
 
-```
+```java
 // Classe abstrata
 public abstract class Pessoa {
     private String nome;
@@ -413,7 +428,7 @@ public abstract class Pessoa {
 Um método abstrato é um método declarado em uma classe abstrata, mas sem uma implementação. A implementação do método abstrato é fornecida pelas subclasses da classe abstrata.
 
 
-```
+```java
 // Classe abstrata
 public abstract class Pessoa {
     private String nome;
