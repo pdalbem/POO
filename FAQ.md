@@ -487,7 +487,7 @@ public class Main {
 
 ```
 
-### EM Java, o que significa a palavra reservada _final_?
+### Em Java, o que significa a palavra reservada _final_?
 Em Java, a palavra reservada _final_ tem vários usos, dependendo de onde ela é aplicada.
 * Variável final: Quando uma variável é declarada como `final`, ela se torna uma constante. Ou seja, seu valor não pode ser alterado após a inicialização.
 ```java
@@ -596,7 +596,7 @@ Interfaces definem um conjunto de métodos abstratos que uma classe deve impleme
 
 ### Qual a diferença entre classe abstrata e interface?
 * Classe abstrata: Pode conter métodos abstratos e métodos concretos (com implementação). Uma classe pode herdar apenas de uma classe abstrata.
-* Interface: Contém apenas métodos abstratos (a partir do Java 8, pode conter métodos default e static). Uma classe pode implementar múltiplas interfaces.
+* Interface: Contém apenas métodos abstratos (a partir do Java 8, pode conter métodos _default_ e _static_). Uma classe pode implementar múltiplas interfaces.
 
 ### O que é polimorfismo?
 Polimorfismo é a capacidade de um objeto assumir diferentes formas ou comportamentos. Isso permite que um método seja chamado em objetos de diferentes classes, desde que eles compartilhem uma interface comum ou sejam subclasses de uma mesma superclasse
