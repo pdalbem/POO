@@ -82,7 +82,7 @@ Carro carro1 = new Carro();
 Carro carro2 = new Carro("IFS-0P10","Fusca", 1990, "branco");
 ```
 
-### Em Java, o que é a palavra `this`?
+### Em Java, o que significa a palavra reservada `this`?
 Em Java, a palavra-chave `this` refere-se ao objeto atual da classe onde o código está sendo executado. Ela é usada para distinguir entre variáveis de instância e parâmetros com o mesmo nome, referenciar o objeto atual ou chamar um construtor da mesma classe.
 
 ```java
@@ -371,6 +371,57 @@ public class Main {
 
 ```
 
+### Em Java, o que significa a palavra reservada _super_?
+A palvra reservada _super_ é utilizada para se referir à superclasse(classe base) de um objeto. Por meio dela, podemos acessar os atributos e métodos da superclasse.
+
+```java
+public class Pessoa {
+    private String nome;
+    private String documento;
+
+    // Construtor da classe Pessoa
+    public Pessoa(String nome, String documento) {
+        this.nome = nome;
+        this.documento = documento;
+    }
+
+    // Métodos para acessar os valores de nome e documento
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    // Método para exibir informações de uma pessoa
+    public void exibirInformacoes() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Documento: " + documento);
+    }
+}
+
+// Subclasse (Aluno)
+public class Aluno extends Pessoa {
+    private String curso;
+
+    // Construtor da classe Aluno
+    public Aluno(String nome, String documento, String curso) {
+        // Chama o construtor da classe Pessoa usando super(nome, documento)
+        super(nome, documento);
+        this.curso = curso;
+    }
+
+    // Método para exibir as informações do aluno
+    @Override
+    public void exibirInformacoes() {
+        // Chama o método exibirInformacoes() da classe Pessoa
+        super.exibirInformacoes(); // Exibe nome e documento
+        System.out.println("Curso: " + curso);
+    }
+}
+
+```
 
 ### O que é Sobrescrita de Método (_method overriding_)?
 A sobrescrita de método (ou override) ocorre quando uma subclasse fornece sua própria implementação de um método que foi declarado na superclasse. A sobrescrita permite que a subclasse modifique o comportamento do método herdado.
@@ -434,6 +485,35 @@ public class Main {
     }
 }
 
+```
+
+### EM Java, o que significa a palavra reservada _final_?
+Em Java, a palavra reservada _final_ tem vários usos, dependendo de onde ela é aplicada.
+* Variável final: Quando uma variável é declarada como `final`, ela se torna uma constante. Ou seja, seu valor não pode ser alterado após a inicialização.
+```java
+final int NUMERO_MAXIMO = 100;
+// NUMERO_MAXIMO = 101; // Isso geraria um erro de compilação
+```
+* Método final: Quando um método é declarado como `final`, ele não pode ser sobrescrito (_overridden_) nas classes filhas.
+```java
+class ClassePai {
+    final void metodoFinal() {
+        // Implementação do método
+    }
+}
+
+class ClasseFilha extends ClassePai {
+    // void metodoFinal() { } // Isso geraria um erro de compilação
+}
+```
+* Classe final: Quando uma classe é declarada como `final{ , ela não pode ser herdada (não pode ser estendida por outras classes).
+
+```java
+final class ClasseFinal {
+    // Implementação da classe
+}
+
+// class OutraClasse extends ClasseFinal { } Isso geraria um erro de compilação
 ```
 
 ### O que é uma Classe Abstrata?
