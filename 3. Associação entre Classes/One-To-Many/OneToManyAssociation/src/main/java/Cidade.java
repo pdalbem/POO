@@ -1,11 +1,16 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class Cidade {
     private String nome;
     private String uf;
     private List<Funcionario> funcionarios = new ArrayList<>();
+
+    public Iterator<Funcionario> iterator(){
+        return this.funcionarios.iterator();
+    }
 
     //Metodo com quantidade variavel de parametros
     //Utilizado para atribuir objetos Funcionario à uma determinada cidade
@@ -44,9 +49,10 @@ public class Cidade {
         this.uf = uf;
     }
 
-    public List<Funcionario> getFuncionarios() {
-        return funcionarios;
-    }
+// Viola o princípio do encapsulamento. No lugar, vamos utilizar o Iterator
+//    public List<Funcionario> getFuncionarios() {
+//        return funcionarios;
+//    }
 
  //Não será preciso. Os Funcionarios serão adicionados via metodo adicionarFuncionario(Funcionario...f)
 //    public void setFuncionarios(List<Funcionario> funcionarios) {

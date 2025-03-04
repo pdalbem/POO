@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
         Aluno a1 = new Aluno("João", "SC12345");
@@ -27,14 +29,18 @@ public class Main {
 
         //Saber as disciplinas em que Maria (objeto a2) está matriculado
         System.out.println("Disciplinas que "+a2.getNome() + " possui matrícula");
-        for (Matricula m : a2.getMatriculas()) {
+        Iterator<Matricula> it = a2.iterator();
+        while (it.hasNext()){
+            Matricula m = it.next();
             System.out.println("Disciplina: "+m.getDisciplina().getNomeDisciplina());
             System.out.println("Sigla: "+ m.getDisciplina().getSigla()+"\n");
         }
 
         //Saber quem está cursando POO (objeto d1)
         System.out.println("Alunos matriculados em "+d1.getNomeDisciplina());
-        for (Matricula m : d1.getMatriculas()) {
+        it= d1.iterator();
+        while (it.hasNext()){
+            Matricula m = it.next();
             System.out.println("Nome: " +m.getAluno().getNome());
             System.out.println("Nota: " +m.getNota());
             System.out.println("Frequência: " +m.getFrequencia());

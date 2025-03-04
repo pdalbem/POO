@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
         Cidade cidade = new Cidade("São Carlos", "SP");
@@ -10,9 +12,11 @@ public class Main {
 
         cidade.adicionarFuncionario(func1,func2);
 
-        System.out.println("Funcionário de "+cidade.getNome());
-        for (Funcionario f : cidade.getFuncionarios())
+        System.out.println("Funcionários de "+cidade.getNome());
+        Iterator<Funcionario> it = cidade.iterator();
+        while (it.hasNext())
         {
+            Funcionario f = it.next();
             System.out.println("Nome: "+f.getNome());
             System.out.println("CPF: "+ f.getCpf());
         }

@@ -1,11 +1,16 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class Aluno {
     private String nome;
     private String prontuario;
     private List<Matricula> matriculas= new ArrayList<>();
+
+    public  Iterator<Matricula> iterator(){
+        return this.matriculas.iterator();
+    }
 
     //Metodo com quantidade variável de parâmetros
     public void adicionarMatricula(Matricula...m){
@@ -46,9 +51,10 @@ public class Aluno {
         this.prontuario = prontuario;
     }
 
-    public List<Matricula> getMatriculas() {
-        return matriculas;
-    }
+// Viola o princípio do encapsulamento. Vamos usar Iterator no lugar
+//    public List<Matricula> getMatriculas() {
+//        return matriculas;
+//    }
 
 //Não vou precisar. As matriculas serão adicionadas via metodo adicionarMatricula
 //    public void setMatriculas(List<Matricula> matriculas) {

@@ -138,8 +138,8 @@ public class ContaBancaria {
 }
 ```
 
-### O que são métodos getters e setters?
-Getters e Setters são métodos usados para acessar e modificar, respectivamente, os atributos privados de uma classe, seguindo o princípio de encapsulamento.
+### O que são métodos _getters_ e _setters_?
+_Getters_ e _Setters_ são métodos usados para acessar e modificar, respectivamente, os atributos privados de uma classe, seguindo o princípio de encapsulamento.
 ```java
 public class Pessoa {
     // Atributos privados
