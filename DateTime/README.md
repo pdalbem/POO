@@ -237,4 +237,4 @@ public class ExemploFormatacaoParsing {
 }
 ```
 
-<img src="./datetime.png" alt="API Date/Time" width="1000">
+<img src="./datetime.png" alt="API Date/Time" width="700">
