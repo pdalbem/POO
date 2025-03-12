@@ -59,7 +59,8 @@ set.add("Python");
 set.add("C++");
 ```
 
-* TreeSet: Uma implementação de Set que mantém os elementos ordenados, utilizando uma árvore binária balanceada (como um Red-Black Tree).
+* TreeSet: Uma implementação da interface NavigableSet, que por sua vez estende SortedSet. Já SortedSet é uma interface que estende SequencedSet. O TreeSet armazena elementos ordenados em uma árvore binária de busca balanceada (tipicamente uma árvore Red-Black Tree)
+
 ```java
 Set<String> treeSet = new TreeSet<>();
 treeSet.add("Java");
