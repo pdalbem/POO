@@ -5,20 +5,35 @@ fornecem uma maneira de armazenar, acessar e manipular dados de forma eficiente.
 A API Collections fornece implementações de estruturas de dados como listas, conjuntos, mapas, filas e pilhas, 
 e define as operações que podem ser realizadas sobre esses tipos de dados.
 
+Observe a hierarquia de interfaces e classes da API Collections:
+
+<img src="./sequenced_collection.png" alt="API Collections" width="600">
+<img src="./sequenced_map.png" alt="API Collections" width="500">
+
 ### Principais Interfaces da API Collections
 * Collection: A interface raiz de todas as coleções no Java. 
 Ela define métodos fundamentais para manipulação de dados em coleções, como `add()`, `remove()`, `size()`, `isEmpty()`, entre outros. 
 Outras interfaces e classes de coleções herdam dessa interface.
 
-* List: Uma subinterface de Collection que representa uma coleção ordenada, ou seja, em que a ordem dos elementos é mantida. 
-Ela permite elementos duplicados.
+* SequencedCollection (Java 21+): Uma subinterface de Collection que representa uma coleção ordenada, ou seja, em que a ordem dos elementos é mantida. Ela permite elementos duplicados. Não é possível acesso indexado aos elementos. Esta interface possui métodos para acessar e manipular o primeiro e o último elemento da coleção, como `getFirst()`, `getLast()`, `addFirst()`, `addLast()`, `removeFirst()` e `removeLast()`. Também fornece um método `reversed()` que retorna uma visão reversa da coleção.
 
-* Set: Também uma subinterface de Collection, mas difere de List no fato de que não permite elementos duplicados.
+
+* List: Uma subinterface de SequencedCollection. Além de preservar a ordem de inserção (como qualquer SequencedCollection), List ainda oferece métodos adicionais para acesso por índice, como `get(int index)` e `set(int index, E element)`. 
+
+* Set: Uma subinterface de Collection, mas difere de List no fato de que não permite elementos duplicados.
+
+* SequencedSet (Java 21+): Estende SequencedCollection e Set, combinando as características de ambas.
+Garante que não haja elementos duplicados e que a ordem dos elementos seja preservada.
 
 * Queue: Interface que representa uma coleção de elementos organizada de forma a permitir a inserção de novos elementos no final e a remoção do primeiro elemento, seguindo a política FIFO (First In, First Out).
 
 * Map: Embora não seja uma subinterface de Collection, é uma interface fundamental para a API de coleções.
 Ela representa uma coleção de pares chave-valor, onde cada chave é única e mapeia para um único valor.
+
+* SequencedMap (Java 21+): Estende Map. Representa um mapa que possui uma ordem definida para suas entradas.
+Adiciona métodos para acessar e manipular a primeira e a última entrada do mapa, como `firstEntry()`, `lastEntry()`, `putFirst()`, `putLast()`, `pollFirstEntry()` e `pollLastEntry()`.
+Também fornece métodos para obter visões ordenadas das chaves, valores e entradas do mapa, como `sequencedKeySet()`, `sequencedValues()` e `sequencedEntrySet()`. O método `reversed()` retorna um SequencedMap com as entradas em ordem reversa.
+
 
 ### Principais Implementações da API Collections
 * ArrayList: Uma lista que usa um array dinâmico para armazenar os elementos. É a implementação de List mais utilizada devido à sua eficiência para acesso aleatório (via índice).
@@ -61,8 +76,8 @@ map.put("Python", 2);
 
 
 ### Outros Componentes da API Collections
-#### Collections
-A classe Collections fornece métodos estáticos que operam em coleções, como ordenação, busca e reversão.
+#### Classe Collections
+A classe Collections (java.util) é uma classe utilitária que fornece métodos estáticos que operam em coleções, como ordenação, busca e reversão.
 * `sort(List<T> list)`: Ordena uma lista.
 * `reverse(List<?> list)`: Inverte a ordem de uma lista.
 * `max(Collection<? extends T> coll)`: Retorna o maior elemento da coleção.
@@ -121,15 +136,30 @@ public class Main {
 }
 ```
 #### Iterator
- A interface **Iterator** permite percorrer os elementos de uma coleção de forma sequencial. Ele fornece os métodos hasNext() e next() para iterar sobre os elementos.
+O **Iterator** é uma interface que fornece uma maneira padronizada e flexível de percorrer (ou iterar) sobre os elementos de uma coleção, como listas, conjuntos e mapas, sem precisar acessar diretamente os elementos por índice.
+
+O principal objetivo do Iterator é permitir que você percorra todos os elementos de uma coleção de forma sequencial, sem precisar se preocupar com a estrutura interna da coleção (por exemplo, se ela é uma lista, conjunto ou mapa). Ele abstrai o processo de iteração e facilita o acesso aos elementos, tornando a navegação e modificação de coleções mais simples e segura.
+
+A interface Iterator define três métodos principais:
+* `hasNext()`: Verifica se há mais elementos na coleção a serem iterados. Retorna true se houver mais elementos, e false caso contrário.
+
+* `next()`: Retorna o próximo elemento da coleção. Se não houver mais elementos (quando hasNext() retornar false), ele lança uma exceção NoSuchElementException.
+
+* `remove()`: Remove o último elemento retornado pelo next(). Não há retorno (void).
+Se next() não foi chamado ou se remove() for chamado mais de uma vez após uma chamada a next(), lança uma exceção IllegalStateException.
+
+
 
 ```java
- List<Integer> numbers = new ArrayList<>(Arrays.asList(3, 1, 4, 1, 5));
-Iterator<String> iterator = numbers.iterator();
+List<Integer> numbers = new ArrayList<>(Arrays.asList(3, 1, 4, 1, 5));
+Iterator<Integer> iterator = numbers.iterator();
 while (iterator.hasNext()) {
-    System.out.println(iterator.next());
+    int num=iterator.next();
+    if (num % 2 == 0)
+        System.out.println(num);
+    else
+       iterator.remove();    
 }
-
 ```
 
 #### Comparable e Comparator
