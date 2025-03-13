@@ -26,6 +26,10 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Implementação usando array
 * Implementação usando API Collections
 
+[Strings](https://github.com/pdalbem/POO/tree/main/Strings)
+* Principais métods
+* StringBuilder
+* SringBuffer
 
 [API Collections](https://github.com/pdalbem/POO/tree/main/Collections)
 * List
@@ -41,5 +45,11 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Period
 * Date/Time Formatting
 
+[Exception Handling](https://github.com/pdalbem/POO/tree/main/Exceptions)
+* Checked exception
+* Unchecked exception
+* Lançando exceções
+* Exceções personalizadas
+* Try-with-resources
 
 [Frequently Asked Questions (FAQ)](FAQ.md)
