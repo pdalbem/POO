@@ -2,7 +2,7 @@
 
 
 ### O que é Programação Orientada a Objetos (POO)?
-A Programação Orientada a Objetos (POO) é um estilo de programação que estrutura o código em torno de 'objetos', unidades de software que colaboram entre si para solucionar problemas.
+A Programação Orientada a Objetos (POO) é um estilo de programação que estrutura o código em torno de 'objetos', unidades de software que colaboram entre si para solucionar problemas. A POO visa tornar o código mais modular, reutilizável e fácil de manter, permitindo que os desenvolvedores criem sistemas mais robustos e flexíveis.
 
 ### Quais os pilares da POO?
 São 4 pilares:
