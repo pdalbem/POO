@@ -63,7 +63,7 @@ public class Main {
             System.out.println(smartphone.getDescricao()+": "+smartphone.getEstoque());
             System.out.println(smarttv.getDescricao()+": " + smarttv.getEstoque());
             System.out.println(geladeira.getDescricao()+": "+geladeira.getEstoque());
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
