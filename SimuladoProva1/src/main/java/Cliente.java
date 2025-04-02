@@ -22,7 +22,7 @@ public class Cliente {
                             + "\nDesconta: " + c.getDesconto()
                             + "\nValor a pagar: " + c.getValorPagar());
                     System.out.println("Itens desta compra:");
-                    Iterator<ItemCompra> it = c.iterator();
+                    Iterator<ItemCompra> it = c.obterItensCompra();
                     while (it.hasNext()){
                         ItemCompra item=it.next();
                         System.out.println("Produto: "+item.getProduto().getDescricao()+ " - Qtd: "+item.getQuantidadeComprada() + " - Valor: "+item.getValorTotal());
@@ -42,7 +42,7 @@ public class Cliente {
         this.listaCompras.remove(compra);
     }
 
-    public Iterator<Compra> iterator(){
+    public Iterator<Compra> obterCompras(){
         return this.listaCompras.iterator();
     }
 

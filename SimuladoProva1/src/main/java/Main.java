@@ -50,7 +50,7 @@ public class Main {
 
             System.out.println("\nDados da compra "+ compra1.getNumeroCompra());
             System.out.println("Cliente: "+compra1.getCliente().getNome());
-            Iterator<ItemCompra> it =compra1.iterator();
+            Iterator<ItemCompra> it =compra1.obterItensCompra();
             while (it.hasNext()){
                 ItemCompra item=it.next();
                 System.out.println("Produto: "+item.getProduto().getDescricao()+ " - Qtd: "+item.getQuantidadeComprada() + " - Valor: "+item.getValorTotal());

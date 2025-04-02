@@ -45,7 +45,7 @@ public class Compra {
         calcularValorTotalCompra();
     }
 
-    public Iterator<ItemCompra> iterator(){
+    public Iterator<ItemCompra> obterItensCompra(){
         return this.itemCompras.iterator();
     }
 
