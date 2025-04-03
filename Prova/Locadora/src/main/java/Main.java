@@ -50,7 +50,7 @@ public class Main {
             Locacao locacao2 = new Locacao(LocalDate.of(2025,3,26),
                                                          LocalDate.of(2025,4,1),veiculo2, cliente2);
 
-          //  locacao2.adicionarAcessorio(acessorio2); //Gera exceção. Saída esperada: "Acessório indisponível
+           // locacao2.incluirAcessorio(acessorio2); //Gera exceção. Saída esperada: "Acessório indisponível
 
            System.out.println("\nLocações do(a) cliente "+cliente2.getNome());
            itLocacao=cliente2.obterLocacoes(categoria2);

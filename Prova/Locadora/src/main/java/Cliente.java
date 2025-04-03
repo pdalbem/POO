@@ -35,6 +35,7 @@ public class Cliente {
     public Iterator<Locacao> obterLocacoes(LocalDate dataInicial) {
         List<Locacao> listaFiltro = new ArrayList<>();
         for (Locacao locacao : this.locacoes)
+            //if (!locacao.getDataLocacao().isBefore(dataInicial))
             if (locacao.getDataLocacao().isAfter(dataInicial) || locacao.getDataLocacao().isEqual(dataInicial))
                 listaFiltro.add(locacao);
 
@@ -44,6 +45,7 @@ public class Cliente {
     public Iterator<Locacao> obterLocacoes(Categoria categoria) {
         List<Locacao> listaFiltro = new ArrayList<>();
         for (Locacao locacao : this.locacoes)
+            //if (locacao.getVeiculo().getCategoria().getDescricao()== categoria.getDescricao())
             if (locacao.getVeiculo().getCategoria().equals(categoria))
                 listaFiltro.add(locacao);
 

@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Veiculo {
     private final String placa;
@@ -7,14 +7,11 @@ public class Veiculo {
     private final int anoFabricacao;
     private boolean disponivel;
     private Categoria categoria;
-    private final static List<String> placasExistentes=new ArrayList<>();
+    private final static Set<String> placasExistentes=new HashSet<>();
 
     public Veiculo(String placa, String modelo, int anoFabricacao, Categoria categoria) {
-        for (String placaExistente : placasExistentes)
-            if (placaExistente.equals(placa))
-                throw new IllegalArgumentException("Placa já cadastrada");
-
-        placasExistentes.add(placa);
+        if (!placasExistentes.add(placa))
+            throw new IllegalArgumentException("Placa já cadastrada");
         this.placa = placa;
         this.modelo = modelo;
         this.anoFabricacao = anoFabricacao;
