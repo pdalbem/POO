@@ -26,6 +26,13 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Implementação usando array
 * Implementação usando API Collections
 
+[4. Herança](https://github.com/pdalbem/POO/tree/main/3.%20Associa%C3%A7%C3%A3o%20entre%20Classes)
+* Herança
+* Modificadores de acesso
+* Sobrescrita de método
+* Polimorfismo
+
+
 [Strings](https://github.com/pdalbem/POO/tree/main/Strings)
 * Principais métods
 * StringBuilder
