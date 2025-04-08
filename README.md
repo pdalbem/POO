@@ -32,7 +32,6 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Sobrescrita de método
 * Polimorfismo
 
-
 [Strings](https://github.com/pdalbem/POO/tree/main/Strings)
 * Principais métods
 * StringBuilder
