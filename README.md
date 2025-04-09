@@ -31,6 +31,7 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Modificadores de acesso
 * Sobrescrita de método
 * Polimorfismo
+* Classe selada (__sealed class__)
 
 [Strings](https://github.com/pdalbem/POO/tree/main/Strings)
 * Principais métods
