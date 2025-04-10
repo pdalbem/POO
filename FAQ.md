@@ -327,6 +327,8 @@ Navegabilidade define a direção em que a associação pode ser percorrida. Em 
 ### O que é Herança?
 Herança é um mecanismo que permite a criação de uma nova classe baseada em uma classe existente. A nova classe (chamada subclasse ou classe filha) herda os atributos e métodos da classe existente (chamada superclasse ou classe pai), permitindo a reutilização de código.
 
+Os métodos contrutores não são herdados. Cada subclasse deve fornecer o seu próprio construtor e invocar o construtor da superclasse por meio da palavra-chave **super**:
+
 ```java
 // Classe base (superclasse)
 public class Pessoa {
@@ -486,6 +488,16 @@ public class Main {
 }
 
 ```
+**Regras importantes**:
+* Mesma Assinatura: O método na subclasse deve ter a mesma assinatura do método na superclasse. Isto é: mesmo nome, mesmos parâmetros e mesmo retorno.
+
+* Relacionamento de Herança: A sobrescrita só pode ocorrer entre uma superclasse e uma de suas subclasses.
+
+* Modificador de Acesso: O modificador de acesso do método sobrescrito na subclasse não pode ser mais restritivo que o modificador de acesso do método na superclasse. Por exemplo, se o método na superclasse é protected, o método na subclasse pode ser protected ou public, mas não private.
+
+* Anotação ```@Override```: Em Java, é uma boa prática usar a anotação @Override antes do método sobrescrito na subclasse.
+
+* Métodos com os modificadores ```final```, ```static``` e ```private``` **NÃO** podem ser sobrescritos.
 
 ### Em Java, o que significa a palavra reservada _final_?
 Em Java, a palavra reservada _final_ tem vários usos, dependendo de onde ela é aplicada.
@@ -514,6 +526,40 @@ final class ClasseFinal {
 }
 
 // class OutraClasse extends ClasseFinal { } Isso geraria um erro de compilação
+```
+
+### O que é uma classe selada (__sealed class__)?
+Uma classe selada (__sealed class__) é uma classe que restringe quais outras classes podem estendê-la. 
+Elas servem para dar ao desenvolvedor maior controle sobre a hierarquia de classes, melhorando a segurança e a clareza do código, além de ajudar o compilador a realizar verificações mais precisas em tempo de compilação.
+
+Para declara uma classe selada, deve-se usar o modificador ```sealed``` na definição da classe e especificar as classes que podem estendê-la com a cláusula ```permits```.
+
+```java
+public sealed class Pessoa permits Aluno, Funcionario {
+ …
+}
+```
+As classes listadas na cláusula permits devem ser explicitamente declaradas com:
+
+* final: Indica que a subclasse não pode ser estendida.
+* sealed: Indica que a subclasse também é sealed e deve definir suas próprias subclasses permitidas.
+* non-sealed: Indica que a subclasse pode ser estendida por qualquer outra classe (essencialmente "abre" novamente a hierarquia a partir desse ponto)
+```java
+public sealed class Pessoa permits Aluno, Funcionario {
+ …
+}
+public final class Aluno extends Pessoa{
+…
+}
+public sealed class Funcionario extends Pessoa permits Professor,FuncAdm{
+…
+}
+public final class Professor extends Funcionario {
+…
+}
+public final class FuncAdm extends Funcionario{
+…
+}
 ```
 
 ### O que é uma Classe Abstrata?
@@ -599,7 +645,36 @@ Interfaces definem um conjunto de métodos abstratos que uma classe deve impleme
 * Interface: Contém apenas métodos abstratos (a partir do Java 8, pode conter métodos _default_ e _static_). Uma classe pode implementar múltiplas interfaces.
 
 ### O que é polimorfismo?
-Polimorfismo é a capacidade de um objeto assumir diferentes formas ou comportamentos. Isso permite que um método seja chamado em objetos de diferentes classes, desde que eles compartilhem uma interface comum ou sejam subclasses de uma mesma superclasse
+Polimorfismo é a capacidade de um objeto assumir diferentes formas ou comportamentos. Isso permite que um método seja chamado em objetos de diferentes classes, desde que eles compartilhem uma interface comum ou sejam subclasses de uma mesma superclasse.
+
+```java
+public class Funcionario {...}
+
+public class Gerente extends Funcionario {...}
+
+public class Vendedor extends Funcionario {...}
+
+public class Main {
+    public static void main(String[] args) {
+        Funcionario f = new Funcionario("José", 2500);
+        Funcionario g = new Gerente("Maria", 5000,3);
+        Funcionario v = new Vendedor("Joaquim", 3000, 20000);
+
+        List<Funcionario> lista = new ArrayList<>();
+        lista.add(f);
+        lista.add(g);
+        lista.add(v);
+
+        for (Funcionario func : lista){
+            func.exibirInfo();
+            System.out.println("Bônus: " + func.calcularBonus());
+        }
+    }
+}
+``` 
+Os objetos f, g e v são declarados como do tipo Funcionario, mas referenciam instâncias de tipos distintos: Funcionario, Gerente e Vendedor, respectivamente. Isso é possível porque as classes Gerente e Vendedor estendem a classe Funcionario, ou seja, são suas subclasses.
+
+Dessa forma, é possível criar uma lista do tipo Funcionario e armazenar nela objetos de diferentes subclasses. Mesmo que esses objetos tenham implementações distintas de certos métodos (como calcularBonus() ou exibirInfo()), o método executado será determinado em tempo de execução, com base no tipo real do objeto. Esse comportamento é um exemplo clássico de polimorfismo em Java, onde a JVM escolhe dinamicamente qual versão do método deve ser invocada.
 
 ### O que são os princípios SOLID?
 SOLID é uma sigla que representa cinco princípios muito importantes quando desenvolvemos com o paradigma orientado a objetos. Compreender e aplicar esses princípios permitirá  escrever código de melhor qualidade, fácil de entender, manter, testar e escalar. OS princípios são:
