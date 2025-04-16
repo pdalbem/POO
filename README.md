@@ -33,6 +33,12 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Polimorfismo
 * Classe selada (__sealed class__)
 
+[5. Classe abstrata e Interface](https://github.com/pdalbem/POO/tree/main/5.%20Classe%20Abstrata%20e%20Interface)
+* Classe abstrata
+* Método abstrato
+* Interface
+* Interface funcional
+
 [Strings](https://github.com/pdalbem/POO/tree/main/Strings)
 * Principais métods
 * StringBuilder
