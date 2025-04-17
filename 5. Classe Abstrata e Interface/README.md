@@ -486,3 +486,49 @@ Na tabela abaixo podemos ver um comparativo entre classes abstrata e interface.
 
 * Use classes abstratas quando você tem uma hierarquia de classes relacionadas e quer fornecer alguma implementação base compartilhada, além de forçar subclasses a implementar certos métodos. Há um forte senso de "é-um".
 * Use interfaces para definir um contrato de comportamento que classes não necessariamente relacionadas podem implementar. O foco está no "o que" as classes podem fazer, independentemente de sua posição na hierarquia de herança. Permite alcançar um tipo de "herança múltipla" de comportamento.
+
+# Interface Funcional
+Uma interface funcional é uma interface que contém exatamente um método abstrato (além de outros métodos padrão ou estáticos que possam existir). O conceito de interface funcional é particularmente relevante em linguagens de programação que suportam expressões lambda ou closures (como Java 8 e posterior, Kotlin, Scala, etc.), pois essas expressões podem ser usadas para fornecer implementações concisas para o único método abstrato da interface.
+
+### Características Principais de uma Interface Funcional:
+
+* Exatamente um método abstrato: Esta é a característica definidora. A interface pode ter outros métodos, mas apenas um deles não pode ter uma implementação padrão.
+* Pode ter métodos padrão (default methods): Introduzidos no Java 8, os métodos padrão fornecem uma implementação padrão para um método dentro da própria interface. Eles não contam como métodos abstratos.
+* Pode ter métodos estáticos: Interfaces também podem conter métodos estáticos com implementação. Estes também não contam como métodos abstratos.
+* Pode herdar de outras interfaces: Se uma interface herda de outra, e a interface pai tiver métodos abstratos, a interface filha só será funcional se, após a herança, ela ainda tiver exatamente um método abstrato não implementado.
+* Anotação ```@FunctionalInterface``` (em Java): Em Java, a anotação @FunctionalInterface é uma anotação opcional que pode ser usada para indicar que uma interface pretende ser uma interface funcional. O compilador Java verifica se a interface anotada realmente atende aos requisitos de uma interface funcional e gera um erro se não.
+
+### Propósito e Benefícios das Interfaces Funcionais:
+
+* Suporte para expressões lambda e closures: O principal propósito das interfaces funcionais é serem o tipo de destino para expressões lambda e referências de métodos. Uma expressão lambda fornece uma maneira concisa de implementar o único método abstrato de uma interface funcional.
+* Programação funcional: Elas são um pilar da programação funcional em linguagens orientadas a objetos, permitindo tratar funções como cidadãos de primeira classe.
+* Código mais conciso e legível: O uso de expressões lambda com interfaces funcionais pode levar a um código mais curto, direto e fácil de entender, especialmente ao lidar com operações como callbacks, eventos ou processamento de dados.
+* APIs mais expressivas: Muitas APIs modernas utilizam interfaces funcionais para definir comportamentos que podem ser personalizados pelo usuário de forma elegante. Exemplos incluem Runnable, Callable, Predicate, Function, Consumer em Java.
+
+Exemplo:
+```java
+@FunctionalInterface
+interface Operacao {
+    int executar(int a, int b); // Único método abstrato
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Implementação da interface funcional usando uma expressão lambda
+        Operacao adicao = (x, y) -> x + y;
+        Operacao subtracao = (x, y) -> x - y;
+
+        System.out.println("Adição: " + adicao.executar(5, 3)); // Saída: Adição: 8
+        System.out.println("Subtração: " + subtracao.executar(5, 3)); // Saída: Subtração: 2
+
+        // Exemplo com uma interface funcional predefinida
+        java.util.function.Predicate<Integer> isPar = n -> n % 2 == 0;
+        System.out.println("5 é par? " + isPar.test(5)); // Saída: 5 é par? false
+        System.out.println("4 é par? " + isPar.test(4)); // Saída: 4 é par? true
+    }
+}
+```
+A interface Operacao define um único método abstrato executar, que é implementado usando expressões lambda para realizar adição e subtração.
+A interface java.util.function.Predicate é um exemplo de uma interface funcional predefinida na API Java.
+
+Em resumo, interfaces funcionais são um conceito chave para habilitar a programação funcional e o uso de expressões lambda em linguagens orientadas a objetos, promovendo um código mais conciso e expressivo ao lidar com comportamentos como funções.
