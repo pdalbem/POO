@@ -50,6 +50,12 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Queue
 * Set
 
+[API Stream](https://github.com/pdalbem/POO/tree/main/Stream)
+* Estrutura
+* Operações Intermediárias
+* Operações Terminais
+* Streams encadeadas
+
 [API Date/Time](https://github.com/pdalbem/POO/tree/main/DateTime)
 * LocalDate
 * LocalTime
