@@ -244,7 +244,20 @@ Map<Integer, Set<String>> agrupadoComSet = nomes.stream()
     ));
 ```
 
----
+
+ ## Dica Rápida
+
+| Quer fazer...                      | Use...               |
+|-----------------------------------|----------------------|
+| Filtrar elementos                 | `filter`             |
+| Transformar valores               | `map`                |
+| Trabalhar com listas aninhadas    | `flatMap`            |
+| Contar elementos                  | `count`              |
+| Agrupar elementos                 | `groupingBy`         |
+| Combinar valores                  | `reduce`             |
+| Mostrar resultado                 | `forEach`, `collect` |
+
+
 
 ## Referência
 
