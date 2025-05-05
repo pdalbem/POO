@@ -65,4 +65,17 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Exceções personalizadas
 * Try-with-resources
 
+[Generics](https://github.com/pdalbem/POO/tree/main/Generics)
+* Motivação
+* Classes genéricas
+* Interfaces genéricas
+* Métodos genéricos
+* Wildcards
+
+[Optional](https://github.com/pdalbem/POO/tree/main/Optional)
+* Motivação
+* Como criar um Optional
+* Como interagir com um Optional
+
+
 [Frequently Asked Questions (FAQ)](FAQ.md)
