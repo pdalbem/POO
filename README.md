@@ -83,5 +83,15 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Como criar um Optional
 * Como interagir com um Optional
 
+[Princípios SOLID](https://github.com/pdalbem/POO/tree/main/SOLID)
+* S - Single Responsibility
+* O - Open/Closed
+* L - Liskov Substitution
+* I - Interface Segregation
+* D - Dependency Inversion
+
+[Clean Architecture](https://github.com/pdalbem/POO/tree/main/Clean%20Architecture)
+* Camadas
+* Exemplos
 
 [Frequently Asked Questions (FAQ)](FAQ.md)
