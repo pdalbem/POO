@@ -30,6 +30,7 @@ public class Paciente extends Pessoa {
 
     @Override
     public Iterator<Consulta> obterConsultas() {
+
         return this.consultas.iterator();
     }
 
