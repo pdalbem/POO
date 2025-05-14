@@ -21,7 +21,7 @@ public class CursoDAOImpl implements CursoDAO {
                 curso.setId(generatedKeys.getInt(1));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
     }
 
@@ -34,7 +34,7 @@ public class CursoDAOImpl implements CursoDAO {
             stmt.setInt(2, curso.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -48,7 +48,7 @@ public class CursoDAOImpl implements CursoDAO {
             stmt.setInt(1, curso.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
     }
 
@@ -61,11 +61,11 @@ public class CursoDAOImpl implements CursoDAO {
             ResultSet rs = stmt.executeQuery();
             if (rs.next())
                 return Optional.of(new Curso(rs.getInt("id"), rs.getString("nome")));
-            else
-                return Optional.empty();
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
+        return Optional.empty();
     }
 
     @Override
@@ -79,7 +79,7 @@ public class CursoDAOImpl implements CursoDAO {
                 cursos.add(new Curso(rs.getInt("id"), rs.getString("nome")));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
         return cursos.iterator();
     }
@@ -98,7 +98,7 @@ public class CursoDAOImpl implements CursoDAO {
                 cursos.add(new Curso(rs.getInt("id"), rs.getString("nome")));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
         return cursos.iterator();
     }

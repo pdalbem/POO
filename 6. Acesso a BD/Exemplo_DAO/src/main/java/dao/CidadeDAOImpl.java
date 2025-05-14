@@ -20,7 +20,7 @@ public class CidadeDAOImpl implements CidadeDAO {
                 cidade.setId(generatedKeys.getInt(1));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+          e.printStackTrace();
         }
     }
 
@@ -33,7 +33,7 @@ public class CidadeDAOImpl implements CidadeDAO {
             stmt.setInt(2, cidade.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
     }
 
@@ -46,7 +46,7 @@ public class CidadeDAOImpl implements CidadeDAO {
             stmt.setInt(1, cidade.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
     }
 
@@ -59,11 +59,11 @@ public class CidadeDAOImpl implements CidadeDAO {
             ResultSet rs = stmt.executeQuery();
             if (rs.next())
                 return Optional.of(new Cidade(rs.getInt("id"), rs.getString("nome")));
-              else
-                return Optional.empty();
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return Optional.empty();
     }
 
     @Override
@@ -77,7 +77,7 @@ public class CidadeDAOImpl implements CidadeDAO {
                 cidades.add(new Cidade(rs.getInt("id"), rs.getString("nome")));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
         return cidades.iterator();
     }

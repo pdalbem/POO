@@ -27,12 +27,11 @@ public class AlunoDAOImpl implements AlunoDAO {
             if (generatedKeys.next())
                 aluno.setId(generatedKeys.getInt(1));
 
-
         } catch (SQLException e) {
-            if (e.getMessage().contains("UNIQUE")) {
+            if (e.getMessage().contains("UNIQUE"))
                 throw new EntityAlreadyExistsException("Prontuário já existe: " + aluno.getProntuario());
-            }
-            throw new RuntimeException(e);
+
+            e.printStackTrace();
         }
     }
 
@@ -50,7 +49,7 @@ public class AlunoDAOImpl implements AlunoDAO {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -63,7 +62,7 @@ public class AlunoDAOImpl implements AlunoDAO {
             stmt.setInt(1, aluno.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -103,13 +102,11 @@ public class AlunoDAOImpl implements AlunoDAO {
                 );
 
                 return Optional.of(aluno);
-            } else {
-                return Optional.empty();
             }
-
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar aluno por ID", e);
+            e.printStackTrace();
         }
+        return Optional.empty();
     }
 
 
@@ -152,10 +149,10 @@ public class AlunoDAOImpl implements AlunoDAO {
                 alunos.add(aluno);
             }
 
-            return alunos.iterator();
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao buscar alunos", e);
+            e.printStackTrace();
         }
+        return alunos.iterator();
     }
 
 
@@ -189,13 +186,11 @@ public class AlunoDAOImpl implements AlunoDAO {
                 );
 
                 return Optional.of(aluno);
-            } else {
-                return Optional.empty();
             }
-
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+        return Optional.empty();
     }
 
 
