@@ -17,9 +17,8 @@ public class Cidade {
     }
 
     public Cidade(int id, String nome) {
-        validarNome(nome);
+        this(nome);
         this.id=id;
-        this.nome=nome;
     }
 
     public int getId() {

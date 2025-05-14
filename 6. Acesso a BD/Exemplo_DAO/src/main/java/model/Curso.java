@@ -17,9 +17,8 @@ public class Curso {
     }
 
     public Curso(int id, String nome) {
-        validarNome(nome);
-       this.id=id;
-        this.nome=nome;
+        this(nome);
+        this.id=id;
     }
 
 

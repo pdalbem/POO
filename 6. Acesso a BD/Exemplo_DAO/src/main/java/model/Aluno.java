@@ -45,16 +45,8 @@ public class Aluno {
     }
 
     public Aluno(int id, String prontuario, String nome, Curso curso, Cidade cidade) {
-        validarProntuario(prontuario);
-        validarNome(nome);
-        validarCurso(curso);
-        validarCidade(cidade);
-
+        this(prontuario, nome, curso, cidade);
         this.id=id;
-        this.prontuario = prontuario;
-        this.nome = nome;
-        this.curso = curso;
-        this.cidade = cidade;
     }
 
 
