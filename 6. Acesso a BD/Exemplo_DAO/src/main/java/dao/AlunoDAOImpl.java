@@ -3,7 +3,6 @@ package dao;
 
 import db.SQLiteConnectionFactory;
 import exception.EntityAlreadyExistsException;
-import exception.EntityNotFoundException;
 import model.Aluno;
 import model.Curso;
 import model.Cidade;
@@ -70,7 +69,15 @@ public class AlunoDAOImpl implements AlunoDAO {
 
     @Override
     public Optional<Aluno> findById(int id) {
-        String sql = "SELECT * FROM aluno WHERE id = ?";
+        String sql = "SELECT " +
+                "   a.id AS aluno_id, a.prontuario, a.nome, " +
+                "   c.id AS curso_id, c.nome AS curso_nome, " +
+                "   ci.id AS cidade_id, ci.nome AS cidade_nome " +
+                "FROM aluno a " +
+                "JOIN curso c ON a.curso_id = c.id " +
+                "JOIN cidade ci ON a.cidade_id = ci.id " +
+                "WHERE a.id = ?";
+
         try (Connection conn = SQLiteConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -78,19 +85,18 @@ public class AlunoDAOImpl implements AlunoDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                int cursoId = rs.getInt("curso_id");
-                int cidadeId = rs.getInt("cidade_id");
+                Curso curso = new Curso(
+                        rs.getInt("curso_id"),
+                        rs.getString("curso_nome")
+                );
 
-                CursoDAO cursoDAO = new CursoDAOImpl();
-                CidadeDAO cidadeDAO = new CidadeDAOImpl();
-
-                Curso curso = cursoDAO.findById(cursoId)
-                        .orElseThrow(() -> new EntityNotFoundException("Curso não encontrado (ID: " + cursoId + ")"));
-                Cidade cidade = cidadeDAO.findById(cidadeId)
-                        .orElseThrow(() -> new EntityNotFoundException("Cidade não encontrada (ID: " + cidadeId + ")"));
+                Cidade cidade = new Cidade(
+                        rs.getInt("cidade_id"),
+                        rs.getString("cidade_nome")
+                );
 
                 Aluno aluno = new Aluno(
-                        rs.getInt("id"),
+                        rs.getInt("aluno_id"),
                         rs.getString("prontuario"),
                         rs.getString("nome"),
                         curso, cidade
@@ -102,38 +108,45 @@ public class AlunoDAOImpl implements AlunoDAO {
             }
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erro ao buscar aluno por ID", e);
         }
     }
+
 
 
 
     @Override
     public Iterator<Aluno> findAll() {
         List<Aluno> alunos = new ArrayList<>();
-        String sql = "SELECT * FROM aluno";
+        String sql = "SELECT " +
+                "a.id AS aluno_id, a.prontuario, a.nome AS aluno_nome, " +
+                "ci.id AS cidade_id, ci.nome AS cidade_nome, " +
+                "c.id AS curso_id, c.nome AS curso_nome " +
+                "FROM aluno a " +
+                "INNER JOIN cidade ci ON a.cidade_id = ci.id " +
+                "INNER JOIN curso c ON a.curso_id = c.id";
 
         try (Connection conn = SQLiteConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
-            CursoDAO cursoDAO = new CursoDAOImpl();
-            CidadeDAO cidadeDAO = new CidadeDAOImpl();
-
             while (rs.next()) {
-                int cursoId = rs.getInt("curso_id");
-                int cidadeId = rs.getInt("cidade_id");
+                Cidade cidade = new Cidade(
+                        rs.getInt("cidade_id"),
+                        rs.getString("cidade_nome")
+                );
 
-                Curso curso = cursoDAO.findById(cursoId)
-                        .orElseThrow(() -> new EntityNotFoundException("Curso não encontrado (ID: " + cursoId + ")"));
-                Cidade cidade = cidadeDAO.findById(cidadeId)
-                        .orElseThrow(() -> new EntityNotFoundException("Cidade não encontrada (ID: " + cidadeId + ")"));
+                Curso curso = new Curso(
+                        rs.getInt("curso_id"),
+                        rs.getString("curso_nome")
+                );
 
                 Aluno aluno = new Aluno(
-                        rs.getInt("id"),
+                        rs.getInt("aluno_id"),
                         rs.getString("prontuario"),
-                        rs.getString("nome"),
-                        curso, cidade
+                        rs.getString("aluno_nome"),
+                        curso,
+                        cidade
                 );
 
                 alunos.add(aluno);
@@ -141,14 +154,23 @@ public class AlunoDAOImpl implements AlunoDAO {
 
             return alunos.iterator();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erro ao buscar alunos", e);
         }
     }
 
 
+
     @Override
     public Optional<Aluno> findByProntuario(String prontuario) {
-        String sql = "SELECT * FROM aluno WHERE prontuario = ?";
+        String sql = "SELECT " +
+                "   a.id AS aluno_id, a.prontuario, a.nome, " +
+                "   c.id AS curso_id, c.nome AS curso_nome, " +
+                "   ci.id AS cidade_id, ci.nome AS cidade_nome " +
+                "FROM aluno a " +
+                "JOIN curso c ON a.curso_id = c.id " +
+                "JOIN cidade ci ON a.cidade_id = ci.id " +
+                "WHERE a.prontuario = ?";
+
         try (Connection conn = SQLiteConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -156,19 +178,11 @@ public class AlunoDAOImpl implements AlunoDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                int cursoId = rs.getInt("curso_id");
-                int cidadeId = rs.getInt("cidade_id");
-
-                CursoDAO cursoDAO = new CursoDAOImpl();
-                CidadeDAO cidadeDAO = new CidadeDAOImpl();
-
-                Curso curso = cursoDAO.findById(cursoId)
-                        .orElseThrow(() -> new EntityNotFoundException("Curso não encontrado (ID: " + cursoId + ")"));
-                Cidade cidade = cidadeDAO.findById(cidadeId)
-                        .orElseThrow(() -> new EntityNotFoundException("Cidade não encontrada (ID: " + cidadeId + ")"));
+                Curso curso = new Curso(rs.getInt("curso_id"), rs.getString("curso_nome"));
+                Cidade cidade = new Cidade(rs.getInt("cidade_id"), rs.getString("cidade_nome"));
 
                 Aluno aluno = new Aluno(
-                        rs.getInt("id"),
+                        rs.getInt("aluno_id"),
                         rs.getString("prontuario"),
                         rs.getString("nome"),
                         curso, cidade
@@ -183,6 +197,7 @@ public class AlunoDAOImpl implements AlunoDAO {
             throw new RuntimeException(e);
         }
     }
+
 
 
 }

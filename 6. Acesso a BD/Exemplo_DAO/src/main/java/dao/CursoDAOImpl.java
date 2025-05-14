@@ -2,7 +2,6 @@
 package dao;
 
 import db.SQLiteConnectionFactory;
-import exception.EntityNotFoundException;
 import model.Curso;
 
 import java.sql.*;

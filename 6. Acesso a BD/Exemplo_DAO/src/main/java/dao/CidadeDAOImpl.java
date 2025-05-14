@@ -2,7 +2,6 @@
 package dao;
 
 import db.SQLiteConnectionFactory;
-import exception.EntityNotFoundException;
 import model.Cidade;
 
 import java.sql.*;

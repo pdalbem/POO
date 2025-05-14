@@ -3,7 +3,6 @@ import exception.EntityAlreadyExistsException;
 import dao.AlunoDAOImpl;
 import dao.CidadeDAOImpl;
 import dao.CursoDAOImpl;
-import exception.EntityNotFoundException;
 import model.Aluno;
 import model.Cidade;
 import model.Curso;
@@ -20,7 +19,7 @@ public class Main {
         CursoDAOImpl cursoDAOImpl = new CursoDAOImpl();
         AlunoDAOImpl alunoDAOImpl = new AlunoDAOImpl();
 
-        Cidade c1 = new Cidade("São Paulo");
+        Cidade c1 = new Cidade("São Carlos");
         Cidade c2 = new Cidade( "Campinas");
         cidadeDAOImpl.save(c1);
         cidadeDAOImpl.save(c2);
@@ -30,8 +29,8 @@ public class Main {
         cursoDAOImpl.save(curso1);
         cursoDAOImpl.save(curso2);
 
-        Aluno a1 = new Aluno( "SP1234", "Alice", curso1, c1);
-        Aluno a2 = new Aluno( "SP5678", "Bruno", curso2, c2);
+        Aluno a1 = new Aluno( "SP1234", "Joaquim", curso1, c1);
+        Aluno a2 = new Aluno( "SP5678", "Maria", curso2, c2);
 
         try {
             alunoDAOImpl.save(a1);
@@ -48,41 +47,35 @@ public class Main {
         }
 
         System.out.println("\nBuscando cidade por ID");
-        try {
-            Optional<Cidade> cidadeOptional = cidadeDAOImpl.findById(1);
-            if (cidadeOptional.isPresent())
-                System.out.println(cidadeOptional.get().getId() + " "+cidadeOptional.get().getNome());
-        } catch (EntityNotFoundException e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
+        Optional<Cidade> cidadeOptional = cidadeDAOImpl.findById(1);
+        if (cidadeOptional.isPresent())
+            System.out.println(cidadeOptional.get().getId() + " "+cidadeOptional.get().getNome());
+        else
+            System.out.println("Cidade não encontrada com ID fornecido");
+
 
         System.out.println("\nBuscando curso por ID");
-        try {
-            Optional<Curso> cursoOptional = cursoDAOImpl.findById(1);
-            if (cursoOptional.isPresent())
-                System.out.println(cursoOptional.get().getId() + " "+cursoOptional.get().getNome());
-        } catch (EntityNotFoundException e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
+        Optional<Curso> cursoOptional = cursoDAOImpl.findById(1);
+        if (cursoOptional.isPresent())
+            System.out.println(cursoOptional.get().getId() + " "+cursoOptional.get().getNome());
+        else
+            System.out.println("Curso não encontrado com ID fornecido");
+
 
         System.out.println("\nBuscando aluno por ID");
         Optional<Aluno> alunoOptional;
-        try {
-            alunoOptional = alunoDAOImpl.findById(1);
-            if (alunoOptional.isPresent())
-                System.out.println(alunoOptional.get().getId() + " "+alunoOptional.get().getNome());
-        } catch (EntityNotFoundException e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
+        alunoOptional = alunoDAOImpl.findById(1);
+        if (alunoOptional.isPresent())
+            System.out.println(alunoOptional.get().getId() + " "+alunoOptional.get().getNome());
+        else
+            System.out.println("Aluno não encontrado com ID fornecido");
 
         System.out.println("\nBuscando aluno por prontuário");
-        try {
-            alunoOptional = alunoDAOImpl.findByProntuario("SP1234");
-            if (alunoOptional.isPresent())
-                System.out.println(alunoOptional.get().getId() + " "+alunoOptional.get().getNome());
-        } catch (EntityNotFoundException e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
+        alunoOptional = alunoDAOImpl.findByProntuario("SP1234");
+        if (alunoOptional.isPresent())
+            System.out.println(alunoOptional.get().getId() + " "+alunoOptional.get().getNome());
+        else
+            System.out.println("Aluno não encontrado com prontuário fornecido");
 
 
         System.out.println("\nAlunos cadastrados:");
