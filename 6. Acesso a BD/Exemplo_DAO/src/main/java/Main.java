@@ -28,8 +28,8 @@ public class Main {
             cursoDAOImpl.save(curso1);
             cursoDAOImpl.save(curso2);
 
-            Aluno a1 = new Aluno( "SP1234", "Joaquim", curso1, c1);
-            Aluno a2 = new Aluno( "SP5678", "Maria", curso2, c2);
+            Aluno a1 = new Aluno( "SP12345", "Joaquim", curso1, c1);
+            Aluno a2 = new Aluno( "SP56785", "Maria", curso2, c2);
             alunoDAOImpl.save(a1);
             alunoDAOImpl.save(a2);
 

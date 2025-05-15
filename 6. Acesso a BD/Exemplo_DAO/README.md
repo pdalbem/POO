@@ -147,12 +147,12 @@ O projeto também utiliza a classe **Optional** para representar valores que pod
 **Ator Principal:** Usuário  
 **Descrição:** Permite que o usuário adicione um novo aluno ao sistema.  
 **Fluxo Principal:**
-1. O usuário informa os dados do aluno: nome, CPF, prontuário, curso, cidade.
-2. O sistema verifica se já existe um aluno com o mesmo CPF.
+1. O usuário informa os dados do aluno: nome, prontuário, curso, cidade.
+2. O sistema verifica se já existe um aluno com o mesmo prontuário.
 3. Se não existir, o aluno é salvo no banco de dados.
 4. O sistema confirma a adição.  
 **Exceções:**
-- Se já existir um aluno com o mesmo CPF, é lançada a `EntityAlreadyExistsException`.
+- Se já existir um aluno com o mesmo prontuário, é lançada a `EntityAlreadyExistsException`.
 - Se algum campo for nulo ou consistir apenas de espaço em branco, o sistema não adicionará o aluno e informará ao usuário.
 
 ### Caso de Uso: Atualizar Aluno
@@ -165,7 +165,7 @@ O projeto também utiliza a classe **Optional** para representar valores que pod
 4. O sistema confirma a atualização.  
 **Exceções:**
 - Se o aluno informado não existir, o sistema exibe uma mensagem de erro.
-- Se já existir um aluno com o mesmo CPF, é lançada a `EntityAlreadyExistsException`.
+- Se já existir um aluno com o mesmo prontuário, é lançada a `EntityAlreadyExistsException`.
 - Se algum campo for nulo ou consistir apenas de espaço em branco, o sistema não adicionará o aluno e informará ao usuário.
 
 ### Caso de Uso: Apagar Aluno
