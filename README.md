@@ -39,6 +39,16 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * Interface
 * Interface funcional
 
+[6. Acesso a banco de dados](https://github.com/pdalbem/POO/tree/main/6.%20Acesso%20a%20BD)
+* Java Database Connectivity (JDBC)
+* Connection, DriverManager, PreparedStatement, ResultSet, SQLException
+* Padrão Data Access Object (DAO)
+* Padrão Factory para conexões (__ConnectionFactory__)
+
+[7. Clean Architecture](https://github.com/pdalbem/POO/tree/main/Clean%20Architecture)
+* Camadas
+* Exemplos
+
 [Strings](https://github.com/pdalbem/POO/tree/main/Strings)
 * Principais métods
 * StringBuilder
