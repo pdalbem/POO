@@ -1,13 +1,14 @@
-# Projeto Exemplo_DAO
-Este projeto em Java tem fins didáticos e demonstra como realizar a persistência de dados utilizando o banco de dados SQLite. 
+# Projeto Exemplo_CleanArch
+Este projeto em Java tem fins didáticos e demonstra como realizar a persistência de dados utilizando o banco de dados SQLite.
 
-A estrutura do sistema segue a separação entre camadas de dados, regras de negócio e apresentação. 
+A arquitetura do sistema segue os princípios da **Clean Architecture**, promovendo uma separação clara entre as camadas e suas responsabilidades.
 
-O padrão **DAO (__Data Access Object__)** é aplicado com interfaces genéricas e específicas, e suas respectivas implementações concretas. 
+Por meio da inversão de dependências, as regras de negócio funcionam independentemente dos detalhes de implementação da persistência, os quais são injetados externamente por meio de interfaces. A abstração dos repositórios é realizada através de interfaces genéricas e específicas, enquanto as implementações concretas residem na camada de infraestrutura. 
 
-A classe **ConnectionFactory** é responsável pela criação centralizada das conexões com o banco. 
+A gestão centralizada das conexões com o banco de dados é delegada à classe **ConnectionFactory**. 
 
-O projeto também utiliza a classe **Optional** para representar valores que podem estar ausentes e conta com uma **exceção personalizada** (EntityAlreadyExistsException) para tratar tentativas de inserção duplicada.
+Adicionalmente, o projeto emprega a classe **Optional** para lidar com a potencial ausência de valores e incorpora uma exceção customizada, **EntityAlreadyExistsException**, para o tratamento de tentativas de inserção de dados já existentes.
+
 
 ---
 # Casos de Uso 
