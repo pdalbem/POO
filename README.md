@@ -100,8 +100,4 @@ Material da disciplina de Programação Orientada a Objetos (PROO).
 * I - Interface Segregation
 * D - Dependency Inversion
 
-[Clean Architecture](https://github.com/pdalbem/POO/tree/main/Clean%20Architecture)
-* Camadas
-* Exemplos
-
 [Frequently Asked Questions (FAQ)](FAQ.md)
