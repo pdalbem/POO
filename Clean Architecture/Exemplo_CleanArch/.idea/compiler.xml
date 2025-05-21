@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sqlite-faculdade" />
-        <module name="Exemplo_DAO" />
+        <module name="Exemplo_CleanArch" />
       </profile>
     </annotationProcessing>
   </component>
