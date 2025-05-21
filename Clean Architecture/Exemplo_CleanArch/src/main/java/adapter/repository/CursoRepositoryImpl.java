@@ -8,7 +8,7 @@ import domain.repository.CursoRepository;
 import java.sql.*;
 import java.util.*;
 
-class CursoRepositoryImpl implements CursoRepository {
+public class CursoRepositoryImpl implements CursoRepository {
     @Override
     public void save(Curso curso) {
         String sqlInsert = "INSERT INTO curso (nome) VALUES (?)";

@@ -1,11 +1,13 @@
-package adapter.repository;
+package adapter.config;
 
-import domain.entity.Cidade;
+import adapter.repository.AlunoRepositoryImpl;
+import adapter.repository.CidadeRepositoryImpl;
+import adapter.repository.CursoRepositoryImpl;
 import usecase.AlunoUseCase;
 import usecase.CidadeUseCase;
 import usecase.CursoUseCase;
 
-public class UseCaseFactory {
+public class AppConfig {
     public static AlunoUseCase createAlunoUseCase() {
         return new AlunoUseCase(new AlunoRepositoryImpl());
     }

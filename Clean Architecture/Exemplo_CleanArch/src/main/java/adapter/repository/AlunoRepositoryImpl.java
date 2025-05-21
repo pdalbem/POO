@@ -11,7 +11,7 @@ import domain.entity.Cidade;
 import java.sql.*;
 import java.util.*;
 
-class AlunoRepositoryImpl implements AlunoRepository {
+public class AlunoRepositoryImpl implements AlunoRepository {
     @Override
     public void save(Aluno aluno) {
         String sqlInsert = "INSERT INTO aluno (prontuario, nome, curso_id, cidade_id) VALUES (?, ?, ?, ?)";

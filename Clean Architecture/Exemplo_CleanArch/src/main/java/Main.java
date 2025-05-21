@@ -1,5 +1,5 @@
 import adapter.config.DatabaseInitializer;
-import adapter.repository.UseCaseFactory;
+import adapter.config.AppConfig;
 import domain.exception.EntityAlreadyExistsException;
 import domain.entity.Aluno;
 import domain.entity.Cidade;
@@ -13,13 +13,11 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        // cria o BD se não existir
         DatabaseInitializer.init();
 
-        CidadeUseCase cidadeUseCase = UseCaseFactory.createCidadeUseCase();
-        CursoUseCase cursoUseCase = UseCaseFactory.createCursoUseCase();
-        AlunoUseCase alunoUseCase = UseCaseFactory.createAlunoUseCase();
-
+        CidadeUseCase cidadeUseCase = AppConfig.createCidadeUseCase();
+        CursoUseCase cursoUseCase = AppConfig.createCursoUseCase();
+        AlunoUseCase alunoUseCase = AppConfig.createAlunoUseCase();
 
         try {
             Cidade c1 = new Cidade("São Carlos");
