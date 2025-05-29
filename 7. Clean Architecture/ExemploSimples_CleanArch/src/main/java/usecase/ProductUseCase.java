@@ -37,12 +37,9 @@ public class ProductUseCase {
     }
 
     private void validate(Product product) {
-        if (product.getName() == null || product.getName().isBlank()) {
+        if (product.getName() == null || product.getName().isBlank())
             throw new InvalidProductException("Nome do produto não pode ser nulo ou vazio");
-        }
-        if (product.getPrice() < 0) {
+        if (product.getPrice() < 0)
             throw new InvalidProductException("Preço não pode ser negativo");
-        }
     }
-
 }

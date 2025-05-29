@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.bdjavafx.controller.DepartamentoController">
+
+    <center>
+        <VBox spacing="10" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <HBox spacing="10">
+                <Label text="Nome do departamento:"/>
+                <TextField fx:id="txtnomedepto" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Sigla do departamento:"/>
+                <TextField fx:id="txtsigladepto" HBox.hgrow="ALWAYS"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER">
+                <padding>
+                    <Insets top="20" bottom="20"/>
+                </padding>
+                <Button fx:id="btnSalvar" text="Salvar" onAction="#salvar" maxWidth="100" />
+                <Button fx:id="btnExcluir" text="Excluir" onAction="#excluir" maxWidth="100" />
+                <Button fx:id="btnCancelar" text="Cancelar" onAction="#cancelar" maxWidth="100" />
+                <Button text="Fechar" onAction="#fecharJanela" />
+            </HBox>
+
+            <TableView fx:id="tblDepartamento" onMouseClicked="#selecionaDepto" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colNomeDepto" text="Nome" prefWidth="300.0"/>
+                    <TableColumn fx:id="colSiglaDepto" text="Sigla" prefWidth="100.0"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

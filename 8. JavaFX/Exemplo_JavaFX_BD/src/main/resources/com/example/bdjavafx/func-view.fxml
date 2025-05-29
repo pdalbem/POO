@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.bdjavafx.controller.FuncionarioController"
+      spacing="10">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="CPF do Funcionário:"/>
+        <TextField fx:id="txtcpffunc" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Nome do Funcionário:"/>
+        <TextField fx:id="txtnomefunc" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Departamento:"/>
+        <ComboBox fx:id="comboDepartamento" HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER">
+        <padding>
+            <Insets top="20" bottom="20"/>
+        </padding>
+        <Button fx:id="btnSalvar" text="Salvar" onAction="#salvar" maxWidth="100"/>
+        <Button fx:id="btnExcluir" text="Excluir" onAction="#excluir" maxWidth="100"/>
+        <Button fx:id="btnCancelar" text="Cancelar" onAction="#cancelar" maxWidth="100"/>
+        <Button text="Fechar" onAction="#fecharJanela" />
+    </HBox>
+
+    <TableView fx:id="tblFuncionario" onMouseClicked="#selecionaFunc" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colCPFFunc" text="CPF" prefWidth="150"/>
+            <TableColumn fx:id="colNomeFunc" text="Nome" prefWidth="250"/>
+            <TableColumn fx:id="colDepFunc" text="Departamento" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+</VBox>
