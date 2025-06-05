@@ -29,18 +29,15 @@ public class ConsultaRepositoryImpl implements ConsultaRepository {
             stmt.setInt(3, consulta.getPaciente().getId());
             stmt.setInt(4, consulta.getMedico().getId());
 
-            int affectedRows = stmt.executeUpdate();
-            if (affectedRows == 0) {
-                throw new SQLException("Erro ao inserir consulta, nenhuma linha afetada.");
-            }
+            stmt.executeUpdate();
 
             ResultSet generatedKeys = stmt.getGeneratedKeys();
-            if (generatedKeys.next()) {
+            if (generatedKeys.next())
                 consulta.setId(generatedKeys.getInt(1));
-            } else {
+            else
                 throw new SQLException("Falha ao obter ID gerado para a consulta.");
-            }
-            generatedKeys.close();
+
+            
 
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao salvar consulta: "+ e.getMessage());
