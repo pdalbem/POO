@@ -83,6 +83,85 @@ public class Carro {
 
 ```
 
+## Blocos incializadores
+Em Java, blocos inicializadores são trechos de código que ficam dentro de uma classe, delimitados por {} e que são executados automaticamente quando a classe é carregada (bloco estático) ou quando um objeto é criado (bloco de instância).
+
+Eles não têm nome, não são métodos e não precisam ser chamados explicitamente — o próprio Java se encarrega de executá-los.
+
+1. Bloco de inicialização de instância
+
+Executado toda vez que um objeto é criado, antes do construtor.
+
+Pode ser usado para inicializar variáveis de instância de forma comum a todos os construtores.
+
+Use quando você tem lógica de inicialização comum a todos os construtores, evitando duplicação de código.
+
+```java
+class Pessoa {
+    private String nome;
+
+    // Bloco de inicialização de instância
+    {
+        System.out.println("Um objeto Pessoa está sendo criado...");
+        nome = "Sem nome"; // valor padrão
+    }
+
+    public Pessoa() {
+        System.out.println("Construtor chamado.");
+    }
+
+    public Pessoa(String nome) {
+        this.nome = nome;
+    }
+
+    public void exibir() {
+        System.out.println("Nome: " + nome);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pessoa p1 = new Pessoa();
+        Pessoa p2 = new Pessoa("Ana");
+        p1.exibir();
+        p2.exibir();
+    }
+}
+```
+
+2. Bloco de inicialização estático
+
+Executado uma única vez, quando a classe é carregada pela JVM.
+
+Usado para inicializar variáveis static complexas (que não podem ser inicializadas apenas com atribuição), carregar configurações ou executar algo antes de qualquer objeto existir.
+
+```java
+class Configuracao {
+    static String VERSAO;
+
+    // Bloco de inicialização estático
+    static {
+        System.out.println("Carregando configurações...");
+        VERSAO = "1.0.0";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Versão: " + Configuracao.VERSAO);
+        System.out.println("Versão: " + Configuracao.VERSAO); // bloco não é executado de novo
+    }
+}
+```
+
+Ordem de execução:
+
+1. Blocos estáticos → executados na carga da classe (uma única vez).
+
+2. Blocos de instância → executados toda vez que um objeto é criado.
+
+3. Construtor → executado logo após o(s) bloco(s) de instância.
+
 ## Modificadores de acesso
 Modificadores de acesso são palavras-chave que controlam a visibilidade (acesso) de classes, atributos e métodos dentro de um programa. Eles definem quem pode acessar ou modificar esses elementos.
 
