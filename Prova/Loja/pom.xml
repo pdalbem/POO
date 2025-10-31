@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>p2_proo_guigomes</artifactId>
+    <artifactId>Loja</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
