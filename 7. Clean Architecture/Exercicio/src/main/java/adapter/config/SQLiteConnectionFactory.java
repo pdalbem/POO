@@ -8,11 +8,8 @@ import java.sql.SQLException;
 public class SQLiteConnectionFactory {
     private static final String URL = "jdbc:sqlite:exercicio.db";
 
-    public static Connection getConnection() {
-        try {
-            return DriverManager.getConnection(URL);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public static Connection getConnection() throws SQLException{
+        return DriverManager.getConnection(URL);
     }
 }
+

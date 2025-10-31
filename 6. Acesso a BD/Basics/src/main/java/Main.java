@@ -6,88 +6,97 @@ import java.util.Optional;
 
 
 public class Main{
+    private static final String URL = "jdbc:sqlite:products.db";
+
     public static void main(String[] args) {
-        DatabaseInitializer.init();
+        databaseInitializer();
 
-        try {
-            Produto produto = new Produto(1, "laptop", 3000);
-            save(produto);
-            System.out.println("Produto inserido com sucesso!");
+        Product product = new Product(1, "laptop", 3000);
 
-            Iterator<Produto> it = findAll();
-            while (it.hasNext()) {
-                Produto next =  it.next();
-                System.out.println(next);
-            }
+        save(product);
+        System.out.println("Produto inserido com sucesso!");
 
-            System.out.println("Atualizando preço do produto");
-            produto.setPreco(3500);
-            update(produto);
+        showProducts();
 
-            it = findAll();
-            while (it.hasNext()) {
-                Produto next =  it.next();
-                System.out.println(next);
-            }
+        System.out.println("Atualizando preço");
+        product.setPrice(3500);
+        update(product);
 
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+        showProducts();
+
+    }
+
+    public static void databaseInitializer(){
+        try (Connection conn = DriverManager.getConnection(URL);
+             Statement stmt = conn.createStatement()) {
+
+            String sql = """
+                CREATE TABLE IF NOT EXISTS product (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    price REAL NOT NULL
+                );
+                """;
+
+            stmt.execute(sql);
+        } catch (Exception e) {
+            System.out.println("Erro ao inicializar o banco de dados: " + e.getMessage());
         }
     }
 
-    public static void save(Produto produto){
-        String insertSql = "INSERT INTO produto (id, nome, preco) VALUES (?, ?, ?)";
-        try (Connection conn =  DriverManager.getConnection("jdbc:sqlite:produtos.db");
+    public static void save(Product product){
+        String insertSql = "INSERT INTO product (id, name, price) VALUES (?, ?, ?)";
+        try (Connection conn =  DriverManager.getConnection(URL);
              PreparedStatement stmt = conn.prepareStatement(insertSql)) {
 
-            stmt.setInt(1,produto.getId());
-            stmt.setString(2, produto.getNome());
-            stmt.setDouble(3, produto.getPreco());
+            stmt.setInt(1, product.getId());
+            stmt.setString(2, product.getName());
+            stmt.setDouble(3, product.getPrice());
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao inserir: " + e.getMessage());
         }
     }
 
-    public static void update(Produto produto) {
-        String updateSql = "UPDATE produto SET nome = ?, preco = ? WHERE id = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:produtos.db");
+    public static void update(Product product) {
+        String updateSql = "UPDATE product SET name = ?, price = ? WHERE id = ?";
+        try (Connection conn =  DriverManager.getConnection(URL);
              PreparedStatement stmt = conn.prepareStatement(updateSql)) {
 
-            stmt.setString(1, produto.getNome());
-            stmt.setDouble(2, produto.getPreco());
-            stmt.setInt(3, produto.getId());
+            stmt.setString(1, product.getName());
+            stmt.setDouble(2, product.getPrice());
+            stmt.setInt(3, product.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao atualizar: " + e.getMessage());
         }
     }
 
-    public static void delete(Produto produto) {
-        String deleteSql = "DELETE FROM produto WHERE id = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:produtos.db");
+    public static void delete(Product product) {
+        String deleteSql = "DELETE FROM product WHERE id = ?";
+        try (Connection conn =  DriverManager.getConnection(URL);
              PreparedStatement stmt = conn.prepareStatement(deleteSql)) {
 
-            stmt.setInt(1, produto.getId());
+            stmt.setInt(1, product.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao deletar: " + e.getMessage());
         }
     }
 
-    public static Optional<Produto> findById(int id) {
-        String sql = "SELECT id, nome, preco FROM produto WHERE id = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:produtos.db");
+    public static Optional<Product> findById(int id) {
+        String sql = "SELECT id, name, price FROM product WHERE id = ?";
+        try (Connection conn =  DriverManager.getConnection(URL);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Produto p = new Produto(
+                Product p = new Product(
                         rs.getInt("id"),
-                        rs.getString("nome"),
-                        rs.getDouble("preco")
+                        rs.getString("name"),
+                        rs.getDouble("price")
                 );
                 return Optional.of(p);
             }
@@ -97,27 +106,35 @@ public class Main{
         return Optional.empty();
     }
 
-    public static Iterator<Produto> findAll() {
-        List<Produto> produtos = new ArrayList<>();
-        String sql = "SELECT id, nome, preco FROM produto";
+    public static Iterator<Product> findAll() {
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT id, name, price FROM product";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:produtos.db");
+        try (Connection conn =  DriverManager.getConnection(URL);
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                Produto p = new Produto(
+                Product p = new Product(
                         rs.getInt("id"),
-                        rs.getString("nome"),
-                        rs.getDouble("preco")
+                        rs.getString("name"),
+                        rs.getDouble("price")
                 );
-                produtos.add(p);
+                products.add(p);
             }
         } catch (SQLException e) {
             System.out.println("Erro ao buscar todos: " + e.getMessage());
         }
 
-        return produtos.iterator();
+        return products.iterator();
+    }
+
+    public static void showProducts(){
+        Iterator<Product> it = findAll();
+        while (it.hasNext()) {
+            Product next =  it.next();
+            System.out.println(next);
+        }
     }
 
 }
