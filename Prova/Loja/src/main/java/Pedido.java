@@ -26,8 +26,12 @@ public class Pedido implements Tributavel, InfoProvider {
     }
 
     public void adicionarProduto(Produto produto) {
-        produto.removerEstoque(1);
-        itensPedido.add(produto);
+        if (produto.getQuantidadeEstoque() > 0) {
+            produto.removerEstoque(1);
+            itensPedido.add(produto);
+        } else {
+            throw new IllegalStateException("Produto sem estoque disponível: " + produto.getNome());
+        }
     }
 
     public void removerProduto(Produto produto) {
