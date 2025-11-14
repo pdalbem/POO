@@ -1,7 +1,6 @@
 package usecase;
 
 import domain.entity.Product;
-import domain.exception.InvalidProductException;
 import domain.repository.ProductRepository;
 
 import java.util.Iterator;
@@ -15,12 +14,10 @@ public class ProductUseCase {
     }
 
     public void createProduct(Product product) {
-        validate(product);
         repository.save(product);
     }
 
     public void updateProduct(Product product) {
-          validate(product);
           repository.update(product);
     }
 
@@ -34,12 +31,5 @@ public class ProductUseCase {
 
     public Iterator<Product> findAllProducts() {
         return repository.findAll();
-    }
-
-    private void validate(Product product) {
-        if (product.getName() == null || product.getName().isBlank())
-            throw new InvalidProductException("Nome do produto não pode ser nulo ou vazio");
-        if (product.getPrice() < 0)
-            throw new InvalidProductException("Preço não pode ser negativo");
     }
 }

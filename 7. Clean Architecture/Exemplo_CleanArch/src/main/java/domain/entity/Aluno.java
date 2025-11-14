@@ -8,45 +8,17 @@ public class Aluno {
     private Curso curso;
     private Cidade cidade;
 
-    private void validarProntuario(String prontuario) {
-        if (prontuario == null || prontuario.isBlank()) {
-            throw new IllegalArgumentException("Prontuário não pode ser nulo ou em branco.");
-        }
-    }
-
-    private void validarNome(String nome) {
-        if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome do aluno não pode ser nulo ou em branco.");
-        }
-    }
-
-    private void validarCurso(Curso curso) {
-        if (curso == null) {
-            throw new IllegalArgumentException("Curso não pode ser nulo.");
-        }
-    }
-
-    private void validarCidade(Cidade cidade) {
-        if (cidade == null) {
-            throw new IllegalArgumentException("Cidade não pode ser nula.");
-        }
-    }
 
     public Aluno(String prontuario, String nome, Curso curso, Cidade cidade) {
-        validarProntuario(prontuario);
-        validarNome(nome);
-        validarCurso(curso);
-        validarCidade(cidade);
-
-        this.prontuario = prontuario;
-        this.nome = nome;
-        this.curso = curso;
-        this.cidade = cidade;
+        setProntuario(prontuario);
+        setNome(nome);
+        setCurso(curso);
+        setCidade(cidade);
     }
 
     public Aluno(int id, String prontuario, String nome, Curso curso, Cidade cidade) {
         this(prontuario, nome, curso, cidade);
-        this.id=id;
+        setId(id);
     }
 
 
@@ -71,22 +43,30 @@ public class Aluno {
     }
 
     public void setProntuario(String prontuario) {
-        validarProntuario(prontuario);
+        if (prontuario == null || prontuario.isBlank()) {
+            throw new IllegalArgumentException("Prontuário não pode ser nulo ou em branco.");
+        }
         this.prontuario = prontuario;
     }
 
     public void setNome(String nome) {
-        validarNome(nome);
+        if (nome == null || nome.isBlank()) {
+            throw new IllegalArgumentException("Nome do aluno não pode ser nulo ou em branco.");
+        }
         this.nome = nome;
     }
 
     public void setCurso(Curso curso) {
-        validarCurso(curso);
+        if (curso == null) {
+            throw new IllegalArgumentException("Curso não pode ser nulo.");
+        }
         this.curso = curso;
     }
 
     public void setCidade(Cidade cidade) {
-        validarCidade(cidade);
+        if (cidade == null) {
+            throw new IllegalArgumentException("Cidade não pode ser nula.");
+        }
         this.cidade = cidade;
     }
 

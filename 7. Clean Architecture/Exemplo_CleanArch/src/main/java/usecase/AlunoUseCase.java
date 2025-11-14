@@ -20,14 +20,28 @@ public class AlunoUseCase {
         if (existente.isPresent()) {
             throw new EntityAlreadyExistsException("Já existe um aluno com esse prontuário: " + aluno.getProntuario());
         }
-        alunoRepo.save(aluno);
+        this.alunoRepo.save(aluno);
     }
 
     public void updateAluno(Aluno aluno){
+        // Verifica se o ID existe antes de atualizar
+        Optional<Aluno> existente = alunoRepo.findById(aluno.getId());
+        if (existente.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Não existe aluno com id " + aluno.getId()
+            );
+        }
         this.alunoRepo.update(aluno);
     }
 
     public void deleteAluno(Aluno aluno){
+        // Verifica se o ID existe antes de deletar
+        Optional<Aluno> existente = alunoRepo.findById(aluno.getId());
+        if (existente.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Não existe aluno com id " + aluno.getId()
+            );
+        }
         this.alunoRepo.delete(aluno);
     }
 

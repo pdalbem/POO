@@ -9,7 +9,7 @@ import java.util.*;
 
 public class CursoDAOImpl implements CursoDAO {
     @Override
-    public void save(Curso curso) {
+     public void save(Curso curso) {
         String sqlInsert = "INSERT INTO curso (nome) VALUES (?)";
         try (Connection conn = SQLiteConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS)) {

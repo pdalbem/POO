@@ -19,10 +19,26 @@ public class CidadeUseCase {
     }
 
     public void updateCidade(Cidade cidade) {
+        // verifica se cidade com o id existe
+        Optional<Cidade> existente = cidadeRepo.findById(cidade.getId());
+        if (existente.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Não existe cidade com id " + cidade.getId()
+            );
+        }
+
         this.cidadeRepo.update(cidade);
     }
 
     public void deleteCidade(Cidade cidade) {
+        // verifica se existe a cidade antes de deletar
+        Optional<Cidade> existente = cidadeRepo.findById(cidade.getId());
+        if (existente.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Não existe cidade com id " + cidade.getId()
+            );
+        }
+
         this.cidadeRepo.delete(cidade);
     }
 

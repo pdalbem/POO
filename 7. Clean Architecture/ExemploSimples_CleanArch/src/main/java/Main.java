@@ -1,3 +1,4 @@
+import adapter.config.AppConfig;
 import adapter.config.DatabaseInitializer;
 import adapter.repository.ProductRepositoryImpl;
 import domain.entity.Product;
@@ -10,7 +11,7 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) {
         DatabaseInitializer.init();
-        ProductUseCase productUseCase = new ProductUseCase(new ProductRepositoryImpl());
+        ProductUseCase productUseCase = AppConfig.createProductUseCase();
 
         try {
             Product p1 = new Product("smartphone",3000);
