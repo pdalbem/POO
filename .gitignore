@@ -1,0 +1,19 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Diretórios de compilação
+out/
+target/
+build/
+
+# Arquivos compilados
+*.class
+*.jar
+
+# Logs
+*.log
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db

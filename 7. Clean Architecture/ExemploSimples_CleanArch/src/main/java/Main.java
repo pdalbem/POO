@@ -13,7 +13,7 @@ public class Main {
         DatabaseInitializer.init();
         ProductUseCase productUseCase = AppConfig.createProductUseCase();
 
-        try {
+       try {
             Product p1 = new Product("smartphone",3000);
             productUseCase.createProduct(p1);
 
