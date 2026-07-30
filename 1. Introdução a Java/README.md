@@ -55,33 +55,279 @@ Java é uma linguagem **fortemente tipada**, ou seja, toda variável precisa ter
 | `char` | Um único caractere | 16 bits | `char letra = 'A';` |
 | `boolean` | Verdadeiro ou falso | 1 bit (lógico) | `boolean ativo = true;` |
 
-### Tipo referência: `String`
-
-`String` não é um tipo primitivo, mas é extremamente utilizado para representar textos:
-
-```java
-String nome = "Maria da Silva";
-```
-
 ### Declaração e atribuição de variáveis
 
 ```java
-int idade;        // declaração
-idade = 30;        // atribuição
+int contador;           // declaração
+contador = 1000;        // atribuição
 
-int altura = 175;  // declaração + atribuição na mesma linha
+float altura = 1.75f;  // declaração + atribuição na mesma linha
 
-final double PI = 3.14159; // constante (não pode ser alterada)
+double PI = 3.14159; // sufixo d é opcional para double
+
+char c = 'A';  //aspas simples
+
+boolean contaAtiva = true;
+
+byte idade = 22;
+
+short quantidadeProdutos = 3200;
+
+long populacaoMundial = 7800000000L;
+
+double pi = 3.141592653589793;
 ```
 
+Ao escrever valores diretamente no código-fonte, estamos utilizando literais. O Java possui regras que determinam o tipo de cada literal.
+
+
+#### 1. Literais inteiros
+
+Um número inteiro escrito normalmente é considerado um literal do tipo `int`.
+
+```java
+int a = 10;
+```
+
+Nesse caso, `10` é um literal `int`.
+
+Para indicar que um literal inteiro é do tipo `long`, podemos utilizar o sufixo `L`:
+
+```java
+long b = 10L;
+```
+
+Também pode ser utilizado `l`, mas recomenda-se usar `L`, pois o `l` minúsculo pode ser confundido visualmente com o número `1`.
+
+
+#### Por que o `L` é necessário em alguns casos?
+
+O Java considera inicialmente os literais inteiros como `int`. Assim:
+
+```java
+long a = 1000;
+```
+
+funciona porque o valor `1000` cabe em um `int`, que pode ser convertido automaticamente para `long`.
+
+Porém:
+
+```java
+long b = 3000000000;
+```
+
+produz erro.
+
+Isso ocorre porque `3000000000` é interpretado inicialmente como um literal `int`, mas esse valor não cabe em um `int`.
+
+Nesse caso, devemos indicar explicitamente que o literal é `long`:
+
+```java
+long b = 3000000000L;
+```
+
+Portanto:
+
+> O sufixo `L` informa ao compilador que o literal inteiro deve ser tratado como `long`.
+
+---
+
+#### 2. Literais de ponto flutuante
+
+Os números com parte decimal, como `3.5` e `8.25`, são tratados como `double` por padrão.
+
+```java
+double x = 3.5;
+```
+
+Portanto:
+
+```text
+3.5 → double
+```
+
+Para indicar que o literal é do tipo `float`, devemos utilizar o sufixo `f` ou `F`:
+
+```java
+float a = 3.5f;
+float b = 3.5F;
+```
+
+Já:
+
+```java
+float c = 3.5;
+```
+
+produz erro, pois `3.5` é um `double`, e não pode ser atribuído implicitamente a um `float`.
+
+Também é possível realizar uma conversão explícita:
+
+```java
+float c = (float) 3.5;
+```
+
+Entretanto, normalmente é preferível utilizar o sufixo `f`:
+
+```java
+float c = 3.5f;
+```
+
+---
+
+#### 3. O sufixo `d`
+
+O sufixo `d` ou `D` pode ser utilizado para indicar que um literal é `double`:
+
+```java
+double x = 3.5d;
+double y = 3.5D;
+```
+
+Porém, esse sufixo é **opcional**, pois `double` já é o tipo padrão para literais de ponto flutuante.
+
+Assim, estas duas declarações são equivalentes:
+
+```java
+double x = 3.5;
+double y = 3.5d;
+```
+
+Na prática, é mais comum escrever:
+
+```java
+double x = 3.5;
+```
+
+---
+
+#### 4. Resumo dos principais sufixos
+
+| Literal | Tipo |
+|---|---|
+| `10` | `int` |
+| `10L` | `long` |
+| `3.5` | `double` |
+| `3.5d` | `double` |
+| `3.5f` | `float` |
+| `'A'` | `char` |
+| `true` | `boolean` |
+
+Os sufixos mais importantes são:
+
+- `L` → `long`
+- `F` → `float`
+- `D` → `double`
+
+O `D` é normalmente desnecessário, pois `double` já é o padrão.
+
+
+
+### `String` em Java
+
+Em Java, o tipo de dado String é usado para representar sequências de caracteres.
+Não é um tipo primitivo, mas uma classe que define objetos que armazenam texto.
+A maneira mais comum de criar uma String é usando um literal de string, que é
+simplesmente o texto entre aspas duplas:
+
+```java
+String nome = "Maria da Silva"; //aspas duplas para String
+```
+
+
+### Inferência de tipos com `var`
+
+O `var` permite que o compilador infira o tipo da variável a partir do valor utilizado na inicialização.
+
+Por exemplo:
+
+```java
+var a = 10; // inferido como int
+var b = 10L; //inferido como long
+var c = 3.5;  //inferido como double
+var d = 3.5f; //inferido como float
+var e = "Java"; //inferido como String
+var numeros = new int[10]; //array de int
+var pessoa = new Pessoa(); //tipo Pessoa
+var lista = new ArrayList<String>(); //tipo ArrayList
+```
+
+Podemos pensar que o compilador transforma conceitualmente essas declarações em:
+
+```java
+int a = 10;
+long b = 10L;
+double c = 3.5;
+float d = 3.5f;
+String e = "Java";
+```
+
+
+A inferência de tipos não se limita a literais. O compilador também utiliza o tipo da expressão que inicializa a variável.
+Por exemplo:
+
+```java
+var resultado = Math.pow(2, 3); 
+```
+
+O tipo da variável resultado é inferido como double, já que 
+`Math.pow()` retorna `double`.
+
+
+
+Portanto, o `var` **não define um tipo novo**. Ele apenas permite que o compilador descubra o tipo a partir da expressão de inicialização.
+
+Variável declarada com var deve ser imediatamente inicializada.
+
+A palavra reservada var só pode ser usada para declarar variáveis locais dentro de
+métodos. Não pode ser usada em campos (atributos de classes) ou como tipo de retorno
+de métodos.
+
+O tipo da variável é definido no momento da compilação e não pode ser alterado durante
+a execução do programa.
+
+
 ### Conversão de tipos (casting)
+A conversão de tipos (type casting) em Java é o processo de transformar um valor de um tipo de dado para outro. 
+
+#### Conversão Implícita (Widening Conversion)
+Ocorre automaticamente quando um tipo menor é atribuído a um tipo maior, sem perda de dados.
+
+```java
+int numero = 10;
+double numeroDouble = numero; // conversão implícita -> 10.0
+
+byte b = 10;
+short s = b;      // byte para short
+int i = s;        // short para int
+long l = i;       // int para long
+float f = l;      // long para float
+double d = f;     // float para double
+```
+
+
+
+#### Conversão Explícita (Narrowing Conversion)
+Quando a conversão pode causar perda de informação, Java normalmente exige que o programador faça a conversão explicitamente.
 
 ```java
 double valorDecimal = 9.99;
 int valorInteiro = (int) valorDecimal; // conversão explícita -> 9
+```
 
-int numero = 10;
-double numeroDouble = numero; // conversão implícita -> 10.0
+```java
+public class Main {
+    public static void main(String[] args) {
+        int a=5, b=2;
+        float resultado;
+
+        resultado = a/b;
+        System.out.println("Resultado SEM casting: " + resultado);
+
+        resultado = (float) a/b;
+        System.out.println("Resultado COM casting: " + resultado);
+    }
+}
 ```
 
 ---
