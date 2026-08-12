@@ -1,14 +1,13 @@
 public class Conta {
     private String numeroConta;
-    private double saldo;
-    private Pessoa proprietario;
+    private float saldo;
+    private Cliente cliente;
 
-    public Conta() {
-    }
-
-    public Conta(String numeroConta, double saldo) {
+    public Conta(String numeroConta, float saldo, Cliente cliente) {
         this.numeroConta = numeroConta;
         this.saldo = saldo;
+        this.cliente = cliente;
+        this.cliente.setConta(this);
     }
 
     public String getNumeroConta() {
@@ -19,19 +18,19 @@ public class Conta {
         this.numeroConta = numeroConta;
     }
 
-    public double getSaldo() {
+    public float getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
 
-    public Pessoa getProprietario() {
-        return proprietario;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setProprietario(Pessoa proprietario) {
-        this.proprietario = proprietario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

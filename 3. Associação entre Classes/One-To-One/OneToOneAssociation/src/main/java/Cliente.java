@@ -1,14 +1,11 @@
-public class Pessoa {
+public class Cliente {
     private String nome;
     private String cpf;
     private Conta conta;
 
-    public Pessoa() {
-    }
-
-    public Pessoa(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
+    public Cliente(String nome, String cpf) {
+        this.setNome(nome);
+        this.setCpf(cpf);
     }
 
     public String getNome() {

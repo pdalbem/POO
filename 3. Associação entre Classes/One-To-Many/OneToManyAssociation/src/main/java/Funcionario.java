@@ -3,12 +3,11 @@ public class Funcionario {
     private String cpf;
     private Cidade cidade;
 
-    public Funcionario() {
-    }
-
-    public Funcionario(String nome, String cpf) {
+    public Funcionario(String nome, String cpf, Cidade cidade) {
         this.nome = nome;
         this.cpf = cpf;
+        this.cidade = cidade;
+        this.cidade.adicionarFuncionario(this);
     }
 
     public String getNome() {

@@ -9,7 +9,7 @@ public class Cidade {
     private List<Funcionario> funcionarios = new ArrayList<>();
 
     public Iterator<Funcionario> iterator(){
-        return this.funcionarios.iterator();
+        return Collections.unmodifiableList(funcionarios).iterator();
     }
 
     //Metodo com quantidade variavel de parametros
@@ -23,9 +23,6 @@ public class Cidade {
 
     public void removerFuncionario(Funcionario f){
         this.funcionarios.remove((f));
-    }
-
-    public Cidade() {
     }
 
     public Cidade(String nome, String uf) {
