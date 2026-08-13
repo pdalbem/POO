@@ -6,12 +6,12 @@ Diferentemente das aulas principais, os conteúdos aqui não seguem necessariame
 
 ### Conteúdo:
 
-[Strings](https://github.com/pdalbem/POO/tree/main/Strings)
+[Strings](https://github.com/pdalbem/POO/tree/main/recursos-java/Strings)
 * Principais métods
 * StringBuilder
 * SringBuffer
 
-[API Date/Time](https://github.com/pdalbem/POO/tree/main/DateTime)
+[API Date/Time](https://github.com/pdalbem/POO/tree/main/recursos-java/DateTime)
 * LocalDate
 * LocalTime
 * LocalDateTime
@@ -19,33 +19,33 @@ Diferentemente das aulas principais, os conteúdos aqui não seguem necessariame
 * Period
 * Date/Time Formatting
 
-[API Collections](https://github.com/pdalbem/POO/tree/main/Collections)
+[API Collections](https://github.com/pdalbem/POO/tree/main/recursos-java/Collections)
 * List
 * Map
 * Queue
 * Set
 
-[API Stream](https://github.com/pdalbem/POO/tree/main/Stream)
+[API Stream](https://github.com/pdalbem/POO/tree/main/recursos-java/Stream)
 * Estrutura
 * Operações Intermediárias
 * Operações Terminais
 * Streams encadeadas
 
-[Exception Handling](https://github.com/pdalbem/POO/tree/main/Exceptions)
+[Exception Handling](https://github.com/pdalbem/POO/tree/main/recursos-java/Exceptions)
 * Checked exception
 * Unchecked exception
 * Lançando exceções
 * Exceções personalizadas
 * Try-with-resources
 
-[Generics](https://github.com/pdalbem/POO/tree/main/Generics)
+[Generics](https://github.com/pdalbem/POO/tree/main/recursos-java/Generics)
 * Motivação
 * Classes genéricas
 * Interfaces genéricas
 * Métodos genéricos
 * Wildcards
 
-[Optional](https://github.com/pdalbem/POO/tree/main/Optional)
+[Optional](https://github.com/pdalbem/POO/tree/main/recursos-java/Optional)
 * Motivação
 * Como criar um Optional
 * Como interagir com um Optional

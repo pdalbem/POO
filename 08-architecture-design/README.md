@@ -5,14 +5,14 @@ Esta seção apresenta princípios e técnicas para projetar software de forma m
 O objetivo é ir além da implementação das classes e mostrar como as decisões de design influenciam a qualidade e a evolução de um sistema.
 
 ### Conteúdo
-[Princípios SOLID](https://github.com/pdalbem/POO/tree/main/SOLID)
+[Princípios SOLID](https://github.com/pdalbem/POO/tree/main/08-architecture-design/01-principios-solid)
 * S - Single Responsibility
 * O - Open/Closed
 * L - Liskov Substitution
 * I - Interface Segregation
 * D - Dependency Inversion
 
-[Clean Architecture](https://github.com/pdalbem/POO/tree/main/SOLID)
+[Clean Architecture](https://github.com/pdalbem/POO/tree/main/08-architecture-design/02-clean-arch)
 * Camadas
 * Regra de Dependência
 * Entidade
