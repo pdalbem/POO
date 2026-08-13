@@ -9,12 +9,12 @@ public class Playlist {
     private List<Musica> musicas = new ArrayList<>();
 
     public Iterator<Musica> iterator(){
-        return this.musicas.iterator();
+        return Collections.unmodifiableList(this.musicas).iterator();
     }
 
     public Duration calcularDuracao(){
          if (this.musicas.isEmpty())
-             throw new IllegalStateException("Playlist "+nome+ " está vazia");
+            return Duration.ZERO;
 
         Duration soma = Duration.ZERO;
         for (Musica m : this.musicas)
@@ -42,11 +42,4 @@ public class Playlist {
         this.nome = nome;
     }
 
-//    public List<Musica> getMusicas() {
-//        return musicas;
-//    }
-//
-//    public void setMusicas(List<Musica> musicas) {
-//        this.musicas = musicas;
-//    }
 }

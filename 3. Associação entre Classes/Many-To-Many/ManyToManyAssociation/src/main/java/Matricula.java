@@ -12,10 +12,10 @@ public class Matricula {
         this.nota = nota;
         this.frequencia = frequencia;
         this.periodo = periodo;
+        this.aluno.adicionarMatricula(this); 
+        this.disciplina.adicionarMatricula(this);
     }
 
-    public Matricula() {
-    }
 
     public double getNota() {
         return nota;
@@ -45,15 +45,8 @@ public class Matricula {
         return aluno;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
     public Disciplina getDisciplina() {
         return disciplina;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
-    }
 }

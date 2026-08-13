@@ -30,7 +30,4 @@ public class Conta {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
 }

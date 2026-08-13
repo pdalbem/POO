@@ -14,13 +14,9 @@ public class Livro {
         Collections.addAll(this.autores,autores);
     }
 
-
     public void removerAutor(Autor autor)
     {
         this.autores.remove(autor);
-    }
-
-    public Livro() {
     }
 
     public Livro(String titulo, int anoPublicacao, double preco, Editora editora) {
@@ -31,9 +27,8 @@ public class Livro {
     }
 
     public Iterator<Autor> iterator(){
-        return this.autores.iterator();
+        return Collections.unmodifiableList(this.autores).iterator();
     }
-
 
     public String getTitulo() {
         return titulo;
@@ -67,11 +62,4 @@ public class Livro {
         this.editora = editora;
     }
 
-/*    public List<Autor> getAutores() {
-        return autores;
-    }
-
-    public void setAutores(List<Autor> autores) {
-        this.autores = autores;
-    }*/
 }

@@ -10,7 +10,7 @@ public class Disciplina {
     private List<Matricula> matriculas= new ArrayList<>();
 
     public  Iterator<Matricula> iterator(){
-        return this.matriculas.iterator();
+        return Collections.unmodifiableList(this.matriculas).iterator();
     }
 
     //Metodo com quantidade variável de parâmetros
@@ -30,8 +30,6 @@ public class Disciplina {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public Disciplina() {
-    }
 
     public String getSigla() {
         return sigla;
@@ -57,13 +55,4 @@ public class Disciplina {
         this.cargaHoraria = cargaHoraria;
     }
 
-// Viola o pincípio do encapsulmaneto. Vamos usar Iterator no lugar
-//    public List<Matricula> getMatriculas() {
-//        return matriculas;
-//    }
-
-    //Não vou precisar. As matriculas serão adicionadas via metodo adicionarMatricula
-   //  public void setMatriculas(List<Matricula> matriculas) {
-  //        this.matriculas = matriculas;
-  //    }
 }

@@ -1,26 +1,21 @@
 public class Funcionario {
     private String nome;
     private String cpf;
-    private double salario;
+    private float salario;
     private Departamento departamento;
 
-    public Funcionario(String nome, String cpf, double salario) {
-        if (salario<0)
-            throw new IllegalArgumentException("Salário não pode ser negativo");
-
-        this.nome = nome;
-        this.cpf = cpf;
-        this.salario = salario;
-    }
-
-    public Funcionario(String nome, String cpf, double salario, Departamento departamento) {
-        if (salario<0)
-            throw new IllegalArgumentException("Salário não pode ser negativo");
-
+    public Funcionario(String nome, String cpf, float salario, Departamento departamento) {
         this.nome = nome;
         this.cpf = cpf;
         this.salario = salario;
         this.departamento = departamento;
+        this.departamento.adicionarFuncionario(this); //Objeto funcionario é criado e já atualiza departamento, mantendo a associação nos 2 lados
+    }
+
+    public void transferirDepartamento(Departamento novoDepartamento){
+        this.departamento.removerFuncionario(this);
+        this.departamento =  novoDepartamento;
+        this.departamento.adicionarFuncionario(this);
     }
 
     public String getNome() {
@@ -39,11 +34,11 @@ public class Funcionario {
         this.cpf = cpf;
     }
 
-    public double getSalario() {
+    public float getSalario() {
         return salario;
     }
 
-    public void setSalario(double salario) {
+    public void setSalario(float salario) {
         this.salario = salario;
     }
 
@@ -51,7 +46,4 @@ public class Funcionario {
         return departamento;
     }
 
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
-    }
 }

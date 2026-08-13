@@ -8,18 +8,21 @@ public class Departamento {
     private String nome;
     private List<Funcionario> funcionarios = new ArrayList<>();
 
-    public double calcularFolhaPagamento(){
-        if (this.funcionarios.isEmpty())
-            throw new IllegalStateException("Não existem funcionários neste departamento");
+    public float obterMediaSalarial(){
+        if (funcionarios.isEmpty())
+            return 0;
+        return calcularFolhaPagamento() / funcionarios.size();
+    }
 
-        double soma=0;
+    public float calcularFolhaPagamento(){
+        float soma=0;
         for(Funcionario f:this.funcionarios)
             soma+=f.getSalario();
         return soma;
     }
 
     public Iterator<Funcionario> iterator(){
-        return this.funcionarios.iterator();
+        return Collections.unmodifiableList(this.funcionarios).iterator();
     }
 
     public void adicionarFuncionario(Funcionario...f){
@@ -51,11 +54,4 @@ public class Departamento {
         this.nome = nome;
     }
 
-/*    public List<Funcionario> getFuncionarios() {
-        return funcionarios;
-    }
-
-    public void setFuncionarios(List<Funcionario> funcionarios) {
-        this.funcionarios = funcionarios;
-    }*/
 }

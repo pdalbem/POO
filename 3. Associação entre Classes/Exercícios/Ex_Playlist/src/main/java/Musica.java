@@ -7,13 +7,6 @@ public class Musica {
     private String estilo;
 
     public Musica(String titulo, String artista, Duration duracao, String estilo) {
-       if (duracao==null)
-          throw new IllegalArgumentException("Duração da música "+titulo+ " não pode ser null");
-       if (duracao.isNegative())
-           throw new IllegalArgumentException("Duração da música "+titulo+" não pode ser negativo");
-       if (duracao.isZero())
-           throw new IllegalArgumentException("Duração da música "+titulo+" Não pode ser 0");
-
         this.titulo = titulo;
         this.artista = artista;
         this.duracao = duracao;

@@ -2,9 +2,6 @@ public class Editora {
     private String razaoSocial;
     private String cnpj;
 
-    public Editora() {
-    }
-
     public Editora(String razaoSocial, String cnpj) {
         this.razaoSocial = razaoSocial;
         this.cnpj = cnpj;

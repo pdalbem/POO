@@ -2,9 +2,6 @@ public class Autor {
     private String nome;
     private String telefone;
 
-    public Autor() {
-    }
-
     public Autor(String nome, String telefone) {
         this.nome = nome;
         this.telefone = telefone;

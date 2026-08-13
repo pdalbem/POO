@@ -16,17 +16,6 @@ public class Main {
         Matricula m4 = new Matricula(a3,d2, 9, 100, "2024.1");
         Matricula m5 = new Matricula(a3, d3, 10,90, "2024.1");
 
-
-        //A associação entre alunos e matrículas e disciplinas e matrículas
-        //pode ser feita via metodo adicionarMatricula(Matricula...m) de cada classe
-         a1.adicionarMatricula(m1);
-         a2.adicionarMatricula(m2,m3);
-         a3.adicionarMatricula(m4,m5);
-
-         d1.adicionarMatricula(m1,m2);
-         d2.adicionarMatricula(m3,m4);
-         d3.adicionarMatricula(m5);
-
         //Saber as disciplinas em que Maria (objeto a2) está matriculado
         System.out.println("Disciplinas que "+a2.getNome() + " possui matrícula");
         Iterator<Matricula> it = a2.iterator();
