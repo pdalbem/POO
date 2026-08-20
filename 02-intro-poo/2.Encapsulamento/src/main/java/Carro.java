@@ -1,13 +1,8 @@
-import java.time.LocalDate;
-
 public class Carro {
-    private String placa;
-    private String marca;
-    private String modelo;
+    private  String placa;
+    private  String marca;
+    private  String modelo;
     private int anoFabricacao;
-
-    public Carro() {
-    }
 
     public Carro(String placa, String marca, String modelo, int anoFabricacao) {
         this.setPlaca(placa);
@@ -16,17 +11,14 @@ public class Carro {
         this.setAnoFabricacao(anoFabricacao);
     }
 
-    public Carro(String placa, String marca, String modelo) {
-        this.setPlaca(placa);
-        this.setMarca(marca);
-        this.setModelo(modelo);
-    }
-
     public String getPlaca() {
         return placa;
     }
 
     public void setPlaca(String placa) {
+        if (placa==null || placa.isBlank())
+            throw new IllegalArgumentException("Placa não pode ter valor nulo ou vazio");
+
         this.placa = placa;
     }
 
@@ -34,7 +26,9 @@ public class Carro {
         return marca;
     }
 
-    public void setMarca(String marca) {
+    private void setMarca(String marca) {
+        if (marca==null || marca.isBlank())
+            throw new IllegalArgumentException("Marca não pode ter valor nulo ou vazio");
         this.marca = marca;
     }
 
@@ -42,7 +36,9 @@ public class Carro {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
+    private void setModelo(String modelo) {
+        if (modelo==null || modelo.isBlank())
+            throw new IllegalArgumentException("Modelo não pode ter valor nulo ou vazio");
         this.modelo = modelo;
     }
 
@@ -50,7 +46,9 @@ public class Carro {
         return anoFabricacao;
     }
 
-    public void setAnoFabricacao(int anoFabricacao) {
+    private void setAnoFabricacao(int anoFabricacao) {
+        if (anoFabricacao<2020)
+            throw new IllegalArgumentException("Ano de fabricação não pode ser anterior a 2020");
         this.anoFabricacao = anoFabricacao;
     }
 }
