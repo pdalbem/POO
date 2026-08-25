@@ -2,6 +2,10 @@ public class Funcionario {
     private String nome;
     private double salario;
 
+    public void reajustarSalario(float porcentagem){
+        this.salario += this.salario * porcentagem /100;
+    }
+
     public Funcionario() {
     }
 
@@ -22,7 +26,5 @@ public class Funcionario {
         return salario;
     }
 
-    public void setSalario(double salario) {
-        this.salario = salario;
-    }
+
 }

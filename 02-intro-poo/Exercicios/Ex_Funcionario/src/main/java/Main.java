@@ -26,11 +26,10 @@ public class Main {
         System.out.println("Media: " + media);
 
         for (int i=0;i<SIZE;i++)
-            if (funcionarios[i].getSalario()>media) {
-                System.out.println("Nome: " + funcionarios[i].getNome());
-                funcionarios[i].setSalario(funcionarios[i].getSalario()*1.05);
-            }else
-                funcionarios[i].setSalario(funcionarios[i].getSalario()*1.10);
+            if (funcionarios[i].getSalario()>media) 
+                funcionarios[i].reajustarSalario(5);
+            else
+                funcionarios[i].reajustarSalario(10);
 
         for (Funcionario f: funcionarios)
             System.out.printf("Novo salário: %.2f",f.getSalario() );
