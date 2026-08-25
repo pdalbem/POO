@@ -34,6 +34,7 @@ public class Pedido {
             itemPedido.getProduto().baixarEstoque(itemPedido.getQuantidadeComprada());
 
         this.status= StatusPedido.CONFIRMADO;
+        this.cliente.adicionarPedido(this); //Faz cliente conhecer o pedido. Navegabilidade bidirecional
     }
 
     public Iterator<ItemPedido> iterator(){
@@ -81,7 +82,6 @@ public class Pedido {
 
         this.numero = numero;
         this.cliente = cliente;            //Pedido conhece cliente
-        this.cliente.adicionarPedido(this); //Faz cliente conhecer o pedido. Navegabilidade bidirecional
         this.data = data;
         this.status = StatusPedido.PENDENTE; //Pedido criado com status PENDENTE
     }
