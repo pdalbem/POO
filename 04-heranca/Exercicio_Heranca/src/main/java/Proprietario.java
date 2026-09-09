@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Proprietario extends Pessoa{
+public final class Proprietario extends Pessoa{
     private String telefone;
     private List<Veiculo> veiculos=new ArrayList<>();
 

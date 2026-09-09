@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Pessoa {
+public sealed class Pessoa permits Proprietario, Mecanico {
     private String nome;
 
     @Override

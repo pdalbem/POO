@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Carro extends Veiculo {
+public final class Carro extends Veiculo {
     private int capacidadePassageiros;
 
     @Override

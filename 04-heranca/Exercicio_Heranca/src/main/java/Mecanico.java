@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Mecanico extends Pessoa{
+public final class Mecanico extends Pessoa{
     private double salario;
 
     @Override

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Veiculo {
+public sealed class Veiculo permits Carro, Moto{
     private String placa;
     private String modelo;
     private Proprietario proprietario;
