@@ -1,6 +1,5 @@
 package usecase;
 
-import adapter.repository.ProductRepositoryImpl;
 import domain.entity.Product;
 import domain.repository.ProductRepository;
 

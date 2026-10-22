@@ -1,21 +1,15 @@
 public class Product {
-    private int id;
+    private final int id;
     private String name;
     private double price;
 
     public Product(int id, String name, double price) {
-        if (name == null || name.isBlank())
-            throw new IllegalArgumentException("Nome não pode ser nulo ou em branco");
-
-        if (price < 0)
-            throw new IllegalArgumentException("Preço não pode ser negativo");
-
+        setName(name);
+        setPrice(price);
         this.id = id;
-        this.name = name;
-        this.price = price;
     }
 
-    @Override
+       @Override
     public String toString() {
         return "Produto{" +
                 "id=" + id +
@@ -36,15 +30,17 @@ public class Product {
         return price;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
+        if (name == null || name.isBlank())
+            throw new IllegalArgumentException("Nome não pode ser nulo ou em branco");
+
         this.name = name;
     }
 
     public void setPrice(double price) {
+        if (price < 0)
+            throw new IllegalArgumentException("Preço não pode ser negativo");
+
         this.price = price;
     }
 }

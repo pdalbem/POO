@@ -1,8 +1,8 @@
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
 
 
 public class Main{
@@ -10,20 +10,32 @@ public class Main{
 
     public static void main(String[] args) {
         databaseInitializer();
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.print("Digite o id: ");
+            int id = scanner.nextInt();
+            scanner.nextLine();
+            System.out.print("Digite o nome: ");
+            String nome = scanner.nextLine();
 
-        Product product = new Product(1, "laptop", 3000);
+            System.out.print("Digite o preço: ");
+            double preco = scanner.nextDouble();
 
-        save(product);
-        System.out.println("Produto inserido com sucesso!");
+            Product product = new Product(id,nome,preco);
 
-        showProducts();
+            save(product);
+            showProducts();
 
-        System.out.println("Atualizando preço");
-        product.setPrice(3500);
-        update(product);
+            System.out.print("Novo preço para " + product.getName() + ": ");
+            preco = scanner.nextDouble();
+            System.out.println("Atualizando preço");
+            product.setPrice(preco);
+            update(product);
 
-        showProducts();
-
+            showProducts();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void databaseInitializer(){
@@ -35,11 +47,11 @@ public class Main{
                     id INTEGER PRIMARY KEY,
                     name TEXT NOT NULL,
                     price REAL NOT NULL
-                );
+                )
                 """;
 
             stmt.execute(sql);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro ao inicializar o banco de dados: " + e.getMessage());
         }
     }
@@ -90,15 +102,16 @@ public class Main{
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
+            try(ResultSet rs = stmt.executeQuery()) {
 
-            if (rs.next()) {
-                Product p = new Product(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getDouble("price")
-                );
-                return Optional.of(p);
+                if (rs.next()) {
+                    Product p = new Product(
+                            rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getDouble("price")
+                    );
+                    return Optional.of(p);
+                }
             }
         } catch (SQLException e) {
             System.out.println("Erro ao buscar por ID: " + e.getMessage());
@@ -106,7 +119,7 @@ public class Main{
         return Optional.empty();
     }
 
-    public static Iterator<Product> findAll() {
+    public static List<Product> findAll() {
         List<Product> products = new ArrayList<>();
         String sql = "SELECT id, name, price FROM product";
 
@@ -126,15 +139,12 @@ public class Main{
             System.out.println("Erro ao buscar todos: " + e.getMessage());
         }
 
-        return products.iterator();
+        return products;
     }
 
     public static void showProducts(){
-        Iterator<Product> it = findAll();
-        while (it.hasNext()) {
-            Product next =  it.next();
-            System.out.println(next);
-        }
+        for (Product p : findAll())
+            System.out.println(p);
     }
 
 }
