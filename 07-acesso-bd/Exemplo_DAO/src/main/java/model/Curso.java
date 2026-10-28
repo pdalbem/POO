@@ -1,26 +1,18 @@
-
 package model;
 
 public class Curso {
-    private int id;
+    private final int id;
     private String nome;
 
-    private void validarNome(String nome) {
-        if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome do curso não pode ser nulo ou em branco");
-        }
-    }
-
     public Curso(String nome) {
-        validarNome(nome);
-        this.nome=nome;
+      setNome(nome);
+      this.id = 0;
     }
 
     public Curso(int id, String nome) {
-        this(nome);
+        setNome(nome);
         this.id=id;
     }
-
 
     public int getId() {
         return id;
@@ -31,11 +23,9 @@ public class Curso {
     }
 
     public void setNome(String nome) {
-        validarNome(nome);
-        this.nome = nome;
-    }
+        if (nome == null || nome.isBlank())
+            throw new IllegalArgumentException("Nome do curso não pode ser nulo ou em branco");
 
-    public void setId(int id) {
-        this.id = id;
+        this.nome = nome;
     }
 }

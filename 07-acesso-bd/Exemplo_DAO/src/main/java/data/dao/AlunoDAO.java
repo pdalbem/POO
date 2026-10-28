@@ -1,7 +1,6 @@
-package dao;
+package data.dao;
 
 import model.Aluno;
-
 import java.util.Optional;
 
 public interface AlunoDAO extends DAO<Aluno>{
