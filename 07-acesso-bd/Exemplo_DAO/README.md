@@ -12,64 +12,6 @@ O projeto também utiliza a classe **Optional** para representar valores que pod
 ---
 # Casos de Uso 
 
-## Domínio: Cidade
-
-
-<img src="img/cidadeUC.png">
-
-### Caso de Uso: Adicionar Cidade
-**Ator Principal:** Usuário  
-**Descrição:** Permite que o usuário adicione uma nova cidade ao sistema.  
-**Fluxo Principal:**
-1. O usuário informa o nome da cidade
-2. A cidade é adicionada ao banco de dados.
-3. O sistema confirma a adição.  
-**Exceções:**
-- Se o nome da cidade for nulo ou consistir apenas em espaços em branco, o sistema não adicionará a cidade e informará ao usuário que o nome da cidade não pode estar vazio.
-
-### Caso de Uso: Atualizar Cidade
-**Ator Principal:** Usuário  
-**Descrição:** Permite que o usuário atualize as informações de uma cidade já cadastrada.  
-**Fluxo Principal:**
-1. O usuário informa qual cidade deseja atualizar, junto com novos dados.
-2. O sistema localiza a cidade correspondente.
-3. O sistema atualiza os dados no banco.
-4. O sistema confirma a atualização.  
-**Exceções:**
-- Se o ID informado não corresponder a nenhuma cidade, uma mensagem de erro é exibida.
-- Se o novo nome da cidade for nulo ou consistir apenas em espaços em branco, o sistema não atualizará a cidade e informará ao usuário que o nome da cidade não pode estar vazio.
-
-### Caso de Uso: Apagar Cidade
-**Ator Principal:** Usuário  
-**Descrição:** Permite que o usuário remova uma cidade cadastrada.  
-**Fluxo Principal:**
-1. O usuário informa a cidade a ser removida.
-2. O sistema verifica a existência da cidade.
-3. A cidade é removida do banco de dados.
-4. O sistema confirma a remoção.  
-**Exceções:**
-- Se a cidade informada não for localizada, uma mensagem de erro é exibida.
-- Se a cidade estiver vinculada a outros dados, a exclusão pode ser impedida.
-
-### Caso de Uso: Obter Todas as Cidades
-**Ator Principal:** Usuário  
-**Descrição:** Permite visualizar todas as cidades cadastradas.  
-**Fluxo Principal:**
-1. O usuário solicita a listagem de cidades.
-2. O sistema consulta o banco de dados.
-3. Todas as cidades cadastradas são exibidas.
-
-### Caso de Uso: Obter Cidade por ID
-**Ator Principal:** Usuário  
-**Descrição:** Permite buscar uma cidade específica a partir de seu ID.  
-**Fluxo Principal:**
-1. O usuário informa o ID da cidade.
-2. O sistema busca a cidade correspondente.
-3. Os dados da cidade são exibidos.  
-**Exceções:**
-- Se o ID não existir, o sistema informa que a cidade não foi encontrada.
-
----
 
 ## Domínio: Curso
 
@@ -147,7 +89,7 @@ O projeto também utiliza a classe **Optional** para representar valores que pod
 **Ator Principal:** Usuário  
 **Descrição:** Permite que o usuário adicione um novo aluno ao sistema.  
 **Fluxo Principal:**
-1. O usuário informa os dados do aluno: nome, prontuário, curso, cidade.
+1. O usuário informa os dados do aluno: nome, prontuário e curso.
 2. O sistema verifica se já existe um aluno com o mesmo prontuário.
 3. Se não existir, o aluno é salvo no banco de dados.
 4. O sistema confirma a adição.  
