@@ -18,13 +18,13 @@ public class Main {
             ProprietarioService proprietarioService = new ProprietarioService(new ProprietarioDAOImpl());
             VeiculoService veiculoService = new VeiculoService(new VeiculoDAOImpl());
 
-            Proprietario proprietario =  new Proprietario("Carlos Silva");
+            Proprietario proprietario =  new Proprietario("Joaquim");
             proprietario = proprietarioService.cadastrar(proprietario);
 
-            Veiculo veiculo = new Veiculo("ABC1D23","Toyota", proprietario);
+            Veiculo veiculo = new Veiculo("ABC1234","VW/FUSCA", proprietario);
             veiculo = veiculoService.cadastrar(veiculo);
 
-            Optional<Veiculo> encontrado = veiculoService.buscarPorPlaca("ABC1D23");
+            Optional<Veiculo> encontrado = veiculoService.buscarPorPlaca("ABC1234");
             if (encontrado.isPresent())
                 System.out.println(encontrado.get());
 
