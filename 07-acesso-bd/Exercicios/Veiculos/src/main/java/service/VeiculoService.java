@@ -19,6 +19,9 @@ public class VeiculoService {
         if (veiculo == null)
             throw new IllegalArgumentException("O veículo não pode ser nulo.");
 
+        if (veiculo.getProprietario().getId() == 0)
+            throw new IllegalArgumentException("O proprietário deve estar cadastrado.");
+
         return veiculoDAO.save(veiculo);
     }
 
@@ -33,13 +36,14 @@ public class VeiculoService {
         if (placa == null || placa.isBlank())
             throw new IllegalArgumentException("A placa do veículo é obrigatória.");
 
-
         return veiculoDAO.findByPlaca(placa);
     }
 
     public List<Veiculo> buscarPorProprietario(Proprietario proprietario) {
         if (proprietario == null)
             throw new IllegalArgumentException("O proprietário não pode ser nulo.");
+        if (proprietario.getId() == 0)
+            throw new IllegalArgumentException("O proprietário não está cadastrado.");
 
         return veiculoDAO.findByProprietario(proprietario);
     }

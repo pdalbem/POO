@@ -20,12 +20,18 @@ public class AlunoService {
         if (aluno == null)
             throw new IllegalArgumentException("O aluno não pode ser nulo." );
 
+        if (aluno.getCurso().getId() <= 0)
+            throw new IllegalArgumentException("O curso não está cadastrado.");
+
         return alunoDAO.save(aluno);
     }
 
     public void atualizar(Aluno aluno) {
         if (aluno == null)
             throw new IllegalArgumentException("O aluno não pode ser nulo.");
+
+        if (aluno.getCurso().getId() <= 0)
+            throw new IllegalArgumentException("O curso não está cadastrado.");
 
         int linhasAfetadas = alunoDAO.update(aluno);
         if (linhasAfetadas == 0)
